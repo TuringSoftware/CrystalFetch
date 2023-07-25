@@ -1,0 +1,384 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CEC09F0F2A6BB66200980857 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F0E2A6BB66200980857 /* Main.swift */; };
+		CEC09F112A6BB66200980857 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F102A6BB66200980857 /* ContentView.swift */; };
+		CEC09F132A6BB66300980857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC09F122A6BB66300980857 /* Assets.xcassets */; };
+		CEC09F262A6DAB7E00980857 /* BuildConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F252A6DAB7E00980857 /* BuildConfigView.swift */; };
+		CEC09F282A6DBED400980857 /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F272A6DBED400980857 /* Worker.swift */; };
+		CEC09F2B2A6DC40900980857 /* UUPBuilds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F2A2A6DC40900980857 /* UUPBuilds.swift */; };
+		CEC09F2D2A6DC60500980857 /* UUPDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F2C2A6DC60500980857 /* UUPDetails.swift */; };
+		CEC09F2F2A6DC72000980857 /* UUPEditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F2E2A6DC72000980857 /* UUPEditions.swift */; };
+		CEC09F312A6DC8FB00980857 /* UUPPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F302A6DC8FB00980857 /* UUPPackage.swift */; };
+		CEC09F332A6DCA2C00980857 /* UUPDumpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F322A6DCA2C00980857 /* UUPDumpAPI.swift */; };
+		CEC09F352A6DF33C00980857 /* BuildsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F342A6DF33C00980857 /* BuildsListView.swift */; };
+		CEC09F372A6E5B7600980857 /* BuildDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F362A6E5B7600980857 /* BuildDetails.swift */; };
+		CEC09F392A6E5D5C00980857 /* BuildEditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F382A6E5D5C00980857 /* BuildEditions.swift */; };
+		CEC09F3B2A6E629F00980857 /* PrettyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F3A2A6E629F00980857 /* PrettyString.swift */; };
+		CEC09F3D2A6EECC700980857 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F3C2A6EECC700980857 /* Downloader.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CEC09F0B2A6BB66200980857 /* Glass ISO Builder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Glass ISO Builder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC09F0E2A6BB66200980857 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		CEC09F102A6BB66200980857 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CEC09F122A6BB66300980857 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEC09F172A6BB66300980857 /* Glass_ISO_Builder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Glass_ISO_Builder.entitlements; sourceTree = "<group>"; };
+		CEC09F252A6DAB7E00980857 /* BuildConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigView.swift; sourceTree = "<group>"; };
+		CEC09F272A6DBED400980857 /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
+		CEC09F2A2A6DC40900980857 /* UUPBuilds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUPBuilds.swift; sourceTree = "<group>"; };
+		CEC09F2C2A6DC60500980857 /* UUPDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUPDetails.swift; sourceTree = "<group>"; };
+		CEC09F2E2A6DC72000980857 /* UUPEditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUPEditions.swift; sourceTree = "<group>"; };
+		CEC09F302A6DC8FB00980857 /* UUPPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUPPackage.swift; sourceTree = "<group>"; };
+		CEC09F322A6DCA2C00980857 /* UUPDumpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUPDumpAPI.swift; sourceTree = "<group>"; };
+		CEC09F342A6DF33C00980857 /* BuildsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildsListView.swift; sourceTree = "<group>"; };
+		CEC09F362A6E5B7600980857 /* BuildDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildDetails.swift; sourceTree = "<group>"; };
+		CEC09F382A6E5D5C00980857 /* BuildEditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildEditions.swift; sourceTree = "<group>"; };
+		CEC09F3A2A6E629F00980857 /* PrettyString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyString.swift; sourceTree = "<group>"; };
+		CEC09F3C2A6EECC700980857 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		CEC09F3E2A6F151800980857 /* Glass-ISO-Builder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Glass-ISO-Builder-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEC09F082A6BB66200980857 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CEC09F022A6BB66200980857 = {
+			isa = PBXGroup;
+			children = (
+				CEC09F0D2A6BB66200980857 /* Source */,
+				CEC09F0C2A6BB66200980857 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CEC09F0C2A6BB66200980857 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEC09F0B2A6BB66200980857 /* Glass ISO Builder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEC09F0D2A6BB66200980857 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				CEC09F292A6DC37800980857 /* UUPDump */,
+				CEC09F0E2A6BB66200980857 /* Main.swift */,
+				CEC09F102A6BB66200980857 /* ContentView.swift */,
+				CEC09F3C2A6EECC700980857 /* Downloader.swift */,
+				CEC09F252A6DAB7E00980857 /* BuildConfigView.swift */,
+				CEC09F362A6E5B7600980857 /* BuildDetails.swift */,
+				CEC09F382A6E5D5C00980857 /* BuildEditions.swift */,
+				CEC09F342A6DF33C00980857 /* BuildsListView.swift */,
+				CEC09F272A6DBED400980857 /* Worker.swift */,
+				CEC09F122A6BB66300980857 /* Assets.xcassets */,
+				CEC09F172A6BB66300980857 /* Glass_ISO_Builder.entitlements */,
+				CEC09F3E2A6F151800980857 /* Glass-ISO-Builder-Info.plist */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		CEC09F292A6DC37800980857 /* UUPDump */ = {
+			isa = PBXGroup;
+			children = (
+				CEC09F2A2A6DC40900980857 /* UUPBuilds.swift */,
+				CEC09F2C2A6DC60500980857 /* UUPDetails.swift */,
+				CEC09F322A6DCA2C00980857 /* UUPDumpAPI.swift */,
+				CEC09F2E2A6DC72000980857 /* UUPEditions.swift */,
+				CEC09F302A6DC8FB00980857 /* UUPPackage.swift */,
+				CEC09F3A2A6E629F00980857 /* PrettyString.swift */,
+			);
+			path = UUPDump;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEC09F0A2A6BB66200980857 /* Glass ISO Builder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEC09F1A2A6BB66300980857 /* Build configuration list for PBXNativeTarget "Glass ISO Builder" */;
+			buildPhases = (
+				CEC09F072A6BB66200980857 /* Sources */,
+				CEC09F082A6BB66200980857 /* Frameworks */,
+				CEC09F092A6BB66200980857 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Glass ISO Builder";
+			productName = "Glass ISO Builder";
+			productReference = CEC09F0B2A6BB66200980857 /* Glass ISO Builder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEC09F032A6BB66200980857 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				ORGANIZATIONNAME = "Turing Software, LLC";
+				TargetAttributes = {
+					CEC09F0A2A6BB66200980857 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = CEC09F062A6BB66200980857 /* Build configuration list for PBXProject "Glass ISO Builder" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CEC09F022A6BB66200980857;
+			productRefGroup = CEC09F0C2A6BB66200980857 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEC09F0A2A6BB66200980857 /* Glass ISO Builder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEC09F092A6BB66200980857 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC09F132A6BB66300980857 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEC09F072A6BB66200980857 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC09F112A6BB66200980857 /* ContentView.swift in Sources */,
+				CEC09F312A6DC8FB00980857 /* UUPPackage.swift in Sources */,
+				CEC09F332A6DCA2C00980857 /* UUPDumpAPI.swift in Sources */,
+				CEC09F282A6DBED400980857 /* Worker.swift in Sources */,
+				CEC09F262A6DAB7E00980857 /* BuildConfigView.swift in Sources */,
+				CEC09F0F2A6BB66200980857 /* Main.swift in Sources */,
+				CEC09F372A6E5B7600980857 /* BuildDetails.swift in Sources */,
+				CEC09F3B2A6E629F00980857 /* PrettyString.swift in Sources */,
+				CEC09F3D2A6EECC700980857 /* Downloader.swift in Sources */,
+				CEC09F2D2A6DC60500980857 /* UUPDetails.swift in Sources */,
+				CEC09F352A6DF33C00980857 /* BuildsListView.swift in Sources */,
+				CEC09F392A6E5D5C00980857 /* BuildEditions.swift in Sources */,
+				CEC09F2F2A6DC72000980857 /* UUPEditions.swift in Sources */,
+				CEC09F2B2A6DC40900980857 /* UUPBuilds.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CEC09F182A6BB66300980857 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CEC09F192A6BB66300980857 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		CEC09F1B2A6BB66300980857 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Source/Glass_ISO_Builder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source/Glass-ISO-Builder-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "llc.turing.Glass-ISO-Builder";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CEC09F1C2A6BB66300980857 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Source/Glass_ISO_Builder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source/Glass-ISO-Builder-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "llc.turing.Glass-ISO-Builder";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEC09F062A6BB66200980857 /* Build configuration list for PBXProject "Glass ISO Builder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEC09F182A6BB66300980857 /* Debug */,
+				CEC09F192A6BB66300980857 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEC09F1A2A6BB66300980857 /* Build configuration list for PBXNativeTarget "Glass ISO Builder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEC09F1B2A6BB66300980857 /* Debug */,
+				CEC09F1C2A6BB66300980857 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEC09F032A6BB66200980857 /* Project object */;
+}
