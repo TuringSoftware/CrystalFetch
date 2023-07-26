@@ -133,13 +133,24 @@ class Worker: ObservableObject {
                 let total = ByteCountFormatter.string(fromByteCount: bytesTotal, countStyle: .file)
                 Task { @MainActor in
                     self.progressStatus = String.localizedStringWithFormat(NSLocalizedString("Downloading %@ of %@...", comment: "Worker"), written, total)
-                    self.progress = (Float(bytesWritten) / Float(bytesTotal))
+                    let progress = (Float(bytesWritten) / Float(bytesTotal))
+                    self.progress = progress > 1.0 ? 1.0 : progress
                 }
             }
             progressStatus = NSLocalizedString("Converting download to ISO...", comment: "Worker")
             progress = nil
             try await convert(files: baseUrl)
         }
+    }
+    
+    private nonisolated func extractLine(from data: Data) -> String? {
+        if let string = String(data: data, encoding: .ascii)?.filter({ $0.isASCII }) {
+            let lines = string.split(whereSeparator: \.isNewline)
+            if let line = lines.filter({ !$0.isEmpty }).last {
+                return String(line)
+            }
+        }
+        return nil
     }
     
     private func convert(files url: URL) async throws {
@@ -152,7 +163,7 @@ class Worker: ObservableObject {
         process.arguments = ["wim", ".", "1"]
         let outputPipe = Pipe()
         outputPipe.fileHandleForReading.readabilityHandler = { handle in
-            if let line = String(data: handle.availableData, encoding: .ascii)?.filter({ $0.isASCII }), !line.isEmpty {
+            if let line = self.extractLine(from: handle.availableData) {
                 NSLog("[convert.sh stdout]: %@", line)
                 Task { @MainActor in
                     self.progressStatus = line
@@ -161,7 +172,7 @@ class Worker: ObservableObject {
         }
         let errorPipe = Pipe()
         errorPipe.fileHandleForReading.readabilityHandler = { handle in
-            if let line = String(data: handle.availableData, encoding: .ascii)?.filter({ $0.isASCII }), !line.isEmpty {
+            if let line = self.extractLine(from: handle.availableData) {
                 NSLog("[convert.sh stderr]: %@", line)
                 Task { @MainActor in
                     self.lastErrorLine = line
