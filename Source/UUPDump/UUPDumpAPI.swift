@@ -60,7 +60,7 @@ actor UUPDumpAPI {
     }
     
     func fetchBuilds(search: String? = nil) async throws -> UUPBuilds {
-        return try await makeRequest(endpoint: "listid.php", arguments: ["search": search ?? ""])
+        return try await makeRequest(endpoint: "listid.php", arguments: ["search": search ?? "", "sortByDate": "1"])
     }
     
     func fetchDetails(for uuid: String) async throws -> UUPDetails {
