@@ -16,19 +16,18 @@
 
 import Foundation
 
-// Do not make more than 1 requests a second to avoid triggering rate limit
-private let TIMEOUT = TimeInterval(1)
-private let NS_IN_SECOND = TimeInterval(1000000000)
-
 actor UUPDumpAPI {
+    // Server has a rate limit of 10us so we don't make more than one request per 100us
+    private let kTimeoutSec = TimeInterval(0.0001)
+    private let kNsInSec = TimeInterval(1000000000)
     private let uupDumpEndpointBase = URL(string: "https://uupdump.net/json-api/")!
     private var session = URLSession.shared
     private var lastRequestTime: Date?
     
     private func makeRequest<Response: Decodable>(endpoint: String, arguments: [String: Any] = [:]) async throws -> Response {
-        let nextRequestTime = lastRequestTime?.advanced(by: TIMEOUT).timeIntervalSinceNow
+        let nextRequestTime = lastRequestTime?.advanced(by: kTimeoutSec).timeIntervalSinceNow
         if let nextRequestTime = nextRequestTime, nextRequestTime > 0 {
-            try await Task.sleep(nanoseconds: UInt64(nextRequestTime*NS_IN_SECOND))
+            try await Task.sleep(nanoseconds: UInt64(nextRequestTime*kNsInSec))
             try Task.checkCancellation()
         }
         lastRequestTime = Date.now
