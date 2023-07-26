@@ -1,0 +1,22 @@
+[submodule "libmspack"]
+	path = cabextract
+	url = https://github.com/kyz/libmspack.git
+[submodule "genisoimage"]
+	path = genisoimage
+	url = https://github.com/Distrotech/cdrkit.git
+[submodule "chntpw"]
+	path = chntpw
+	url = https://github.com/TuringSoftware/chntpw.git
+[submodule "wimlib-imagex"]
+	path = wimlib-imagex
+	url = https://github.com/ebiggers/wimlib
+[submodule "converter"]
+	path = converter
+	url = https://github.com/uup-dump/converter.git
+[submodule "OpenSSL"]
+	path = OpenSSL
+	url = https://github.com/krzyzanowskim/OpenSSL.git
+	shallow = true
+[submodule "mkisofs"]
+	path = mkisofs
+	url = https://github.com/TuringSoftware/cdrtools.git
