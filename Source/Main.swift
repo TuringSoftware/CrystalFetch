@@ -23,6 +23,7 @@ struct Main: App {
     var body: some Scene {
         WindowGroup {
             ContentView().environmentObject(worker)
+                .frame(minWidth: 800, minHeight: 400)
         }
     }
 }

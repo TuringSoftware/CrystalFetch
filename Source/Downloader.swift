@@ -108,6 +108,8 @@ actor Downloader {
     /// Start downloading a single item from the queue and retry if the download is interrupted
     private func dequeue() async throws {
         let (task, destinationUrl, retry) = queue.removeFirst()
+        let debugIdentifier = task.originalRequest?.url?.absoluteString ?? "(unknown request)"
+        NSLog("Downloading %@ to %@ (retries left: %d)", debugIdentifier, destinationUrl.path, retry)
         do {
             let resultUrl = try await withTaskCancellationHandler {
                 try await withCheckedThrowingContinuation { continuation in
@@ -120,6 +122,7 @@ actor Downloader {
             try FileManager.default.moveItem(at: resultUrl, to: destinationUrl)
         } catch {
             let error = error as NSError
+            NSLog("Downloading %@ failed: ", debugIdentifier, error.localizedDescription)
             if retry > 0 {
                 let newTask: URLSessionDownloadTask
                 if let resumeData = error.userInfo[NSURLSessionDownloadTaskResumeData] as? Data {

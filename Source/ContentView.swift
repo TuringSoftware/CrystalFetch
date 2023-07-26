@@ -39,7 +39,8 @@ struct ContentView: View {
                     BuildsListView(arch: "arm64", hasPreviewBuilds: hasPreviewBuilds, hasServerBuilds: hasServerBuilds)
                     #endif
                 }.disabled(worker.isBusy)
-            }.listStyle(.sidebar)
+            }.frame(minWidth: 200, idealWidth: 300)
+            .listStyle(.sidebar)
             .searchable(text: $worker.search, placement: .toolbar)
             .onSubmit(of: .search) {
                 if !worker.isBusy {

@@ -27,6 +27,7 @@ struct BuildConfigView: View {
     @State private var isConfirmCancelShown: Bool = false
     @State private var details = BuildDetails.empty
     @State private var edition = BuildEditions.empty
+    @State private var isDownloadCompleted: Bool = false
     
     var body: some View {
         VStack {
@@ -81,10 +82,19 @@ struct BuildConfigView: View {
             }
             Spacer()
             HStack {
-                ProgressView(value: worker.progress) {
-                    
-                } currentValueLabel: {
-                    Text(worker.progressStatus ?? "")
+                // SwiftUI BUG: ProgressView cannot go to indeterminate mode and back
+                if let progress = worker.progress {
+                    ProgressView(value: progress) {
+                        
+                    } currentValueLabel: {
+                        Text(worker.progressStatus ?? "")
+                    }
+                } else {
+                    ProgressView(value: nil as Float?) {
+                        
+                    } currentValueLabel: {
+                        Text(worker.progressStatus ?? "")
+                    }
                 }
             }
             HStack {
@@ -126,6 +136,19 @@ struct BuildConfigView: View {
                 if let lastSelectedLocale = lastSelectedLocale {
                     selectedLocale = lastSelectedLocale
                 }
+            }
+        }
+        .onChange(of: worker.completedDownloadUrl) { newValue in
+            if newValue != nil {
+                isDownloadCompleted = true
+            }
+        }
+        .fileMover(isPresented: $isDownloadCompleted, file: worker.completedDownloadUrl) { result in
+            switch result {
+            case .success(let success):
+                worker.finalize(isoUrl: worker.completedDownloadUrl!, destinationUrl: success)
+            case .failure(let failure):
+                worker.lastSeenError = Worker.ErrorMessage(message: failure.localizedDescription)
             }
         }
     }

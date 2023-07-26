@@ -31,12 +31,13 @@ class Worker: ObservableObject {
     @Published var builds: [UUPBuilds.Build] = []
     @Published var selectedBuild: UUPBuilds.Build?
     @Published var search: String = ""
-    @Published private(set) var progress: Float = 0.0
+    @Published private(set) var progress: Float?
     @Published private(set) var progressStatus: String?
     @Published var completedDownloadUrl: URL?
     
     private let api = UUPDumpAPI()
     private var runningTask: (Task<Void, Never>)?
+    private var lastErrorLine: String?
     
     private var currentArch: String {
         #if arch(arm64)
@@ -81,13 +82,17 @@ class Worker: ObservableObject {
         builds.filter({ $0.arch == currentArch && (hasPreviewBuilds || !$0.title.contains("Insider")) && (hasServerBuilds || !$0.title.contains("Server")) }).first
     }
     
+    private func findIso(at url: URL) -> URL? {
+        let files = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
+        return files?.first(where: { $0.pathExtension.lowercased() == "iso" })
+    }
+    
     func download(uuid: String, language: String, editions: [String]) {
         let cacheUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let baseUrl = cacheUrl.appendingPathComponent(uuid)
         withBusyIndication { [self] in
             let fm = FileManager.default
-            let files = try? fm.contentsOfDirectory(at: baseUrl, includingPropertiesForKeys: nil)
-            if let existingUrl = files?.first(where: { $0.pathExtension == "iso" }) {
+            if let existingUrl = findIso(at: baseUrl) {
                 // if we already have the ISO, go ahead and return it
                 completedDownloadUrl = existingUrl
                 return
@@ -108,11 +113,95 @@ class Worker: ObservableObject {
                 let total = ByteCountFormatter.string(fromByteCount: bytesTotal, countStyle: .file)
                 Task { @MainActor in
                     self.progressStatus = String.localizedStringWithFormat(NSLocalizedString("Downloading %@ of %@...", comment: "Worker"), written, total)
-                    self.progress = (Float(bytesWritten) / Float(bytesTotal)) * 0.9
+                    self.progress = (Float(bytesWritten) / Float(bytesTotal))
                 }
             }
             progressStatus = NSLocalizedString("Converting download to ISO...", comment: "Worker")
-            throw CancellationError()
+            progress = nil
+            try await convert(files: baseUrl)
+        }
+    }
+    
+    private func convert(files url: URL) async throws {
+        let script = Bundle.main.url(forResource: "convert", withExtension: "sh")!
+        let executablePath = Bundle.main.executableURL!.deletingLastPathComponent().path
+        let process = Process()
+        process.executableURL = script
+        process.currentDirectoryURL = url
+        process.environment = ["PATH": "\(executablePath):/usr/bin:/bin:/usr/sbin:/sbin"]
+        process.arguments = ["wim", ".", "1"]
+        let outputPipe = Pipe()
+        outputPipe.fileHandleForReading.readabilityHandler = { handle in
+            if let line = String(data: handle.availableData, encoding: .ascii)?.filter({ $0.isASCII }), !line.isEmpty {
+                NSLog("[convert.sh stdout]: %@", line)
+                Task { @MainActor in
+                    self.progressStatus = line
+                }
+            }
+        }
+        let errorPipe = Pipe()
+        errorPipe.fileHandleForReading.readabilityHandler = { handle in
+            if let line = String(data: handle.availableData, encoding: .ascii)?.filter({ $0.isASCII }), !line.isEmpty {
+                NSLog("[convert.sh stderr]: %@", line)
+                Task { @MainActor in
+                    self.lastErrorLine = line
+                }
+            }
+        }
+        process.standardOutput = outputPipe
+        process.standardError = errorPipe
+        try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation { continuation in
+                process.terminationHandler = { process in
+                    let status = process.terminationStatus
+                    if process.terminationReason == .exit && status == 0 {
+                        continuation.resume()
+                    } else if process.terminationReason == .uncaughtSignal && status == SIGTERM {
+                        continuation.resume(throwing: CancellationError())
+                    } else {
+                        Task { @MainActor in
+                            if let lastErrorLine = self.lastErrorLine {
+                                continuation.resume(throwing: WorkerError.conversionFailedMessage(lastErrorLine))
+                            } else {
+                                continuation.resume(throwing: WorkerError.conversionFailedUnknown(status))
+                            }
+                        }
+                    }
+                }
+                do {
+                    lastErrorLine = nil
+                    try process.run()
+                } catch {
+                    continuation.resume(throwing: error)
+                }
+            }
+        } onCancel: {
+            process.terminate()
+        }
+        completedDownloadUrl = findIso(at: url)
+    }
+    
+    func finalize(isoUrl: URL, destinationUrl: URL) {
+        let scoped = destinationUrl.startAccessingSecurityScopedResource()
+        completedDownloadUrl = nil
+        withBusyIndication {
+            defer {
+                if scoped {
+                    destinationUrl.stopAccessingSecurityScopedResource()
+                }
+            }
+            self.progressStatus = NSLocalizedString("Saving ISO...", comment: "Worker")
+            do {
+                try FileManager.default.moveItem(at: isoUrl, to: destinationUrl)
+            } catch {
+                let error = error as NSError
+                if error.domain == NSCocoaErrorDomain && error.code == NSFileWriteFileExistsError {
+                    // ignore this error
+                } else {
+                    throw error
+                }
+            }
+            try FileManager.default.removeItem(at: isoUrl.deletingLastPathComponent())
         }
     }
     
@@ -122,6 +211,8 @@ class Worker: ObservableObject {
     
     private func withBusyIndication(_ action: @escaping @MainActor () async throws -> Void) {
         isBusy = true
+        progress = nil
+        progressStatus = nil
         runningTask = Task {
             do {
                 try await action()
@@ -134,6 +225,20 @@ class Worker: ObservableObject {
             isBusy = false
             progress = 0.0
             progressStatus = nil
+        }
+    }
+}
+
+enum WorkerError: Error {
+    case conversionFailedUnknown(Int32)
+    case conversionFailedMessage(String)
+}
+
+extension WorkerError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .conversionFailedUnknown(let status): return String.localizedStringWithFormat(NSLocalizedString("The conversion script failed with error code %d", comment: "Worker"), status)
+        case .conversionFailedMessage(let message): return message
         }
     }
 }
