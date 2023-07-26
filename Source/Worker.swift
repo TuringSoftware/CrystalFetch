@@ -15,6 +15,7 @@
 //
 
 import Foundation
+import IOKit.pwr_mgt
 
 @MainActor
 class Worker: ObservableObject {
@@ -87,6 +88,19 @@ class Worker: ObservableObject {
         return files?.first(where: { $0.pathExtension.lowercased() == "iso" })
     }
     
+    private nonisolated func requestIdleAssertion() -> IOPMAssertionID? {
+        var preventIdleSleepAssertion: IOPMAssertionID = .zero
+        let success = IOPMAssertionCreateWithName(kIOPMAssertPreventUserIdleSystemSleep as CFString,
+                                                  IOPMAssertionLevel(kIOPMAssertionLevelOn),
+                                                  "CrystalFetch Downloader" as CFString,
+                                                  &preventIdleSleepAssertion)
+        return success == kIOReturnSuccess ? preventIdleSleepAssertion : nil
+    }
+    
+    private nonisolated func releaseIdleAssertion(_ assertion: IOPMAssertionID) {
+        IOPMAssertionRelease(assertion)
+    }
+    
     func download(uuid: String, language: String, editions: [String]) {
         let cacheUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let baseUrl = cacheUrl.appendingPathComponent(uuid)
@@ -99,6 +113,12 @@ class Worker: ObservableObject {
             }
             try? fm.removeItem(at: baseUrl)
             try fm.createDirectory(at: baseUrl, withIntermediateDirectories: true)
+            let idleAssertion = requestIdleAssertion()
+            defer {
+                if let idleAssertion = idleAssertion {
+                    releaseIdleAssertion(idleAssertion)
+                }
+            }
             completedDownloadUrl = nil
             progress = 0.0
             progressStatus = NSLocalizedString("Fetching files list...", comment: "Worker")
