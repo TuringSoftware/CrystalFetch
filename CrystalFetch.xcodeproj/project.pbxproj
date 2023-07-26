@@ -487,11 +487,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CEC09F0B2A6BB66200980857 /* Glass ISO Builder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Glass ISO Builder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC09F0B2A6BB66200980857 /* CrystalFetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalFetch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC09F0E2A6BB66200980857 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		CEC09F102A6BB66200980857 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CEC09F122A6BB66300980857 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CEC09F172A6BB66300980857 /* Glass_ISO_Builder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Glass_ISO_Builder.entitlements; sourceTree = "<group>"; };
+		CEC09F172A6BB66300980857 /* CrystalFetch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CrystalFetch.entitlements; sourceTree = "<group>"; };
 		CEC09F252A6DAB7E00980857 /* BuildConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigView.swift; sourceTree = "<group>"; };
 		CEC09F272A6DBED400980857 /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
 		CEC09F2A2A6DC40900980857 /* UUPBuilds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUPBuilds.swift; sourceTree = "<group>"; };
@@ -504,7 +504,7 @@
 		CEC09F382A6E5D5C00980857 /* BuildEditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildEditions.swift; sourceTree = "<group>"; };
 		CEC09F3A2A6E629F00980857 /* PrettyString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyString.swift; sourceTree = "<group>"; };
 		CEC09F3C2A6EECC700980857 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
-		CEC09F3E2A6F151800980857 /* Glass-ISO-Builder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Glass-ISO-Builder-Info.plist"; sourceTree = "<group>"; };
+		CEC09F3E2A6F151800980857 /* CrystalFetch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CrystalFetch-Info.plist"; sourceTree = "<group>"; };
 		CEC09F432A6F645400980857 /* cabextract */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cabextract; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC09F4A2A6F655E00980857 /* system.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = system.c; path = libmspack/mspack/system.c; sourceTree = "<group>"; };
 		CEC09F4D2A6F655E00980857 /* qtmd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qtmd.c; path = libmspack/mspack/qtmd.c; sourceTree = "<group>"; };
@@ -910,7 +910,7 @@
 		CEC09F0C2A6BB66200980857 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEC09F0B2A6BB66200980857 /* Glass ISO Builder.app */,
+				CEC09F0B2A6BB66200980857 /* CrystalFetch.app */,
 				CEC09F432A6F645400980857 /* cabextract */,
 				CEC09FD32A6F771C00980857 /* mkisofs */,
 				CEC0A2322A70982D00980857 /* chntpw */,
@@ -933,8 +933,8 @@
 				CEC09F342A6DF33C00980857 /* BuildsListView.swift */,
 				CEC09F272A6DBED400980857 /* Worker.swift */,
 				CEC09F122A6BB66300980857 /* Assets.xcassets */,
-				CEC09F172A6BB66300980857 /* Glass_ISO_Builder.entitlements */,
-				CEC09F3E2A6F151800980857 /* Glass-ISO-Builder-Info.plist */,
+				CEC09F172A6BB66300980857 /* CrystalFetch.entitlements */,
+				CEC09F3E2A6F151800980857 /* CrystalFetch-Info.plist */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -1350,9 +1350,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CEC09F0A2A6BB66200980857 /* Glass ISO Builder */ = {
+		CEC09F0A2A6BB66200980857 /* CrystalFetch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEC09F1A2A6BB66300980857 /* Build configuration list for PBXNativeTarget "Glass ISO Builder" */;
+			buildConfigurationList = CEC09F1A2A6BB66300980857 /* Build configuration list for PBXNativeTarget "CrystalFetch" */;
 			buildPhases = (
 				CEC09F072A6BB66200980857 /* Sources */,
 				CEC09F082A6BB66200980857 /* Frameworks */,
@@ -1370,11 +1370,11 @@
 				CEC0A2DD2A709FD100980857 /* PBXTargetDependency */,
 				CEC0A2DF2A709FD100980857 /* PBXTargetDependency */,
 			);
-			name = "Glass ISO Builder";
+			name = CrystalFetch;
 			packageProductDependencies = (
 			);
 			productName = "Glass ISO Builder";
-			productReference = CEC09F0B2A6BB66200980857 /* Glass ISO Builder.app */;
+			productReference = CEC09F0B2A6BB66200980857 /* CrystalFetch.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CEC09F422A6F645400980857 /* cabextract */ = {
@@ -1497,7 +1497,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CEC09F062A6BB66200980857 /* Build configuration list for PBXProject "Glass ISO Builder" */;
+			buildConfigurationList = CEC09F062A6BB66200980857 /* Build configuration list for PBXProject "CrystalFetch" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1512,7 +1512,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CEC09F0A2A6BB66200980857 /* Glass ISO Builder */,
+				CEC09F0A2A6BB66200980857 /* CrystalFetch */,
 				CEC09F422A6F645400980857 /* cabextract */,
 				CEC09FD22A6F771C00980857 /* mkisofs */,
 				CEC0A2312A70982D00980857 /* chntpw */,
@@ -2065,20 +2065,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Source/Glass_ISO_Builder.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Source/CrystalFetch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Source/Glass-ISO-Builder-Info.plist";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_FILE = "Source/CrystalFetch-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "llc.turing.Glass-ISO-Builder";
+				PRODUCT_BUNDLE_IDENTIFIER = llc.turing.CrystalFetch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2090,20 +2089,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Source/Glass_ISO_Builder.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Source/CrystalFetch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Source/Glass-ISO-Builder-Info.plist";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_FILE = "Source/CrystalFetch-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "llc.turing.Glass-ISO-Builder";
+				PRODUCT_BUNDLE_IDENTIFIER = llc.turing.CrystalFetch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2161,7 +2159,6 @@
 					"$(PROJECT_DIR)/mkisofs/include",
 					"$(PROJECT_DIR)/Extras",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				OTHER_CFLAGS = (
 					"-DINS_BASE=\"\\\"/usr\\\"\"",
 					"-DSCHILY_BUILD",
@@ -2202,7 +2199,6 @@
 					"$(PROJECT_DIR)/mkisofs/include",
 					"$(PROJECT_DIR)/Extras",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				OTHER_CFLAGS = (
 					"-DINS_BASE=\"\\\"/usr\\\"\"",
 					"-DSCHILY_BUILD",
@@ -2318,7 +2314,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CEC09F062A6BB66200980857 /* Build configuration list for PBXProject "Glass ISO Builder" */ = {
+		CEC09F062A6BB66200980857 /* Build configuration list for PBXProject "CrystalFetch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEC09F182A6BB66300980857 /* Debug */,
@@ -2327,7 +2323,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CEC09F1A2A6BB66300980857 /* Build configuration list for PBXNativeTarget "Glass ISO Builder" */ = {
+		CEC09F1A2A6BB66300980857 /* Build configuration list for PBXNativeTarget "CrystalFetch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEC09F1B2A6BB66300980857 /* Debug */,
