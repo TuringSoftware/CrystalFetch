@@ -22,6 +22,8 @@ Credits
 -------
 CrystalFetch uses [UUPDump][3] APIs and converter scripts.
 
+This project is not affiliated with Microsoft Corporation. Windows® is a registered trademark of Microsoft Corporation.
+
   [1]: https://github.com/TuringSoftware/CrystalFetch/actions?query=event%3Arelease+workflow%3ABuild
   [2]: https://mac.getutm.app
   [3]: https://uupdump.net
