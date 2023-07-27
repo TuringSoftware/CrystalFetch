@@ -135,6 +135,8 @@ struct BuildConfigView: View {
                 selectedEditions.formUnion(edition.editions.map({ $0.code }))
                 if let lastSelectedLocale = lastSelectedLocale {
                     selectedLocale = lastSelectedLocale
+                } else {
+                    selectedLocale = worker.defaultLocale
                 }
             }
         }
