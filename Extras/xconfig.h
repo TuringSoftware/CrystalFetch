@@ -996,7 +996,9 @@
 
 /*#undef HAVE_SIZE_T*/
 /*#undef NO_SIZE_T*/
-/* #undef VA_LIST_IS_ARRAY */		/* va_list is an array */
+#ifdef __x86_64__
+#define VA_LIST_IS_ARRAY 1		/* va_list is an array */
+#endif
 #define GETGROUPS_T int
 #define GID_T		GETGROUPS_T
 
