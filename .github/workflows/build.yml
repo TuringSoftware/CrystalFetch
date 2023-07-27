@@ -1,0 +1,149 @@
+name: Build
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+    paths-ignore:
+      - 'LICENSE'
+      - '**.md'
+  pull_request:
+  release:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      test_release:
+        description: 'Test release?'
+        required: true
+        default: 'false'
+
+env:
+  PRODUCT_NAME: CrystalFetch
+  BUILD_XCODE_PATH: /Applications/Xcode_14.2.app
+
+jobs:
+  build:
+    name: Build
+    runs-on: macos-12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Setup Xcode
+        shell: bash
+        run: |
+          [[ "$(xcode-select -p)" == "${{ env.BUILD_XCODE_PATH }}"* ]] || sudo xcode-select -s "${{ env.BUILD_XCODE_PATH }}"
+      - name: Build
+        run: |
+          xcodebuild archive -archivePath "$PRODUCT_NAME" -scheme "$PRODUCT_NAME" -configuration Release CODE_SIGN_IDENTITY="-" PRODUCT_BUNDLE_PREFIX="$PRODUCT_BUNDLE_PREFIX"
+          tar -acf $PRODUCT_NAME.xcarchive.tgz $PRODUCT_NAME.xcarchive
+        env:
+          PRODUCT_NAME: ${{ env.PRODUCT_NAME }}
+          PRODUCT_BUNDLE_PREFIX: ${{ vars.PRODUCT_BUNDLE_PREFIX }}
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.PRODUCT_NAME }}
+          path: ${{ env.PRODUCT_NAME }}.xcarchive.tgz
+  package:
+    name: Package
+    runs-on: macos-12
+    needs: [build]
+    if: github.event_name == 'release' || github.event.inputs.test_release == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Import signing certificate into keychain
+        uses: apple-actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
+          p12-password: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
+      - name: Install Provisioning Profiles
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo $PROFILE_DATA | base64 --decode -o ~/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_UUID.provisionprofile
+        env:
+          PROFILE_DATA: ${{ vars.PROFILE_DATA }}
+          PROFILE_UUID: ${{ vars.PROFILE_UUID }}
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.PRODUCT_NAME }}
+      - name: Package for Release
+        run: |
+          tar -xf ${{ env.PRODUCT_NAME }}.xcarchive.tgz
+          ./Extras/package.sh developer-id $PRODUCT_NAME.xcarchive . "BUNDLE_ID" "$SIGNING_TEAM_ID" "$PROFILE_UUID"
+        env:
+          BUNDLE_ID: ${{ vars.PRODUCT_BUNDLE_PREFIX }}.${{ env.PRODUCT_NAME }}
+          SIGNING_TEAM_ID: ${{ vars.SIGNING_TEAM_ID }}
+          PROFILE_UUID: ${{ vars.PROFILE_UUID }}
+      - name: Notarize app
+        run: npx notarize-cli --file "$PRODUCT_NAME.dmg" --bundle-id "$BUNDLE_ID"
+        env:
+          BUNDLE_ID: ${{ vars.PRODUCT_BUNDLE_PREFIX }}.${{ env.PRODUCT_NAME }}
+          NOTARIZE_USERNAME: ${{ secrets.SIGNING_USERNAME }}
+          NOTARIZE_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+      - name: Upload Artifact
+        if: github.event_name != 'release'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.PRODUCT_NAME }}-dmg
+          path: ${{ env.PRODUCT_NAME }}.dmg
+      - name: Upload Release Asset
+        if: github.event_name == 'release'
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ${{ env.PRODUCT_NAME }}.dmg
+          asset_name: ${{ env.PRODUCT_NAME }}.dmg
+          asset_content_type: application/octet-stream
+  submit:
+    name: Submit
+    runs-on: macos-12
+    needs: [build]
+    if: github.event_name == 'release' || github.event.inputs.test_release == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Import signing certificate into keychain
+        uses: apple-actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
+          p12-password: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
+      - name: Install Provisioning Profiles
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo $PROFILE_DATA | base64 --decode -o ~/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_UUID.provisionprofile
+        env:
+          PROFILE_DATA: ${{ vars.APP_STORE_PROFILE_DATA }}
+          PROFILE_UUID: ${{ vars.APP_STORE_PROFILE_UUID }}
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.PRODUCT_NAME }}
+      - name: Package for App Store
+        run: |
+          tar -xf $PRODUCT_NAME.xcarchive.tgz
+          ./Extras/package.sh app-store $PRODUCT_NAME.xcarchive . "$BUNDLE_ID" "$SIGNING_TEAM_ID" "$PROFILE_UUID"
+        env:
+          BUNDLE_ID: ${{ vars.PRODUCT_BUNDLE_PREFIX }}.${{ env.PRODUCT_NAME }}
+          SIGNING_TEAM_ID: ${{ vars.SIGNING_TEAM_ID }}
+          PROFILE_UUID: ${{ vars.APP_STORE_PROFILE_UUID }}
+      - name: Upload Artifact
+        if: github.event_name != 'release'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.PRODUCT_NAME }}-pkg
+          path: ${{ env.PRODUCT_NAME }}.pkg
+      - name: Upload app to App Store Connect
+        if: github.event_name == 'release'
+        run: |
+          xcrun altool --upload-app -t macos -f "$PRODUCT_NAME.pkg" -u "$SUBMIT_USERNAME" -p "$SUBMIT_PASSWORD"
+        env:
+          PRODUCT_NAME: ${{ env.PRODUCT_NAME }}
+          SUBMIT_USERNAME: ${{ secrets.SIGNING_USERNAME }}
+          SUBMIT_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
