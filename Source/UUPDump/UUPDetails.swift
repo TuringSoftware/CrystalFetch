@@ -33,7 +33,11 @@ struct UUPDetails: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         apiVersion = try values.decode(String.self, forKey: .apiVersion)
         langList = try values.decode([String].self, forKey: .langList)
-        langFancyNames = try values.decode([String: String].self, forKey: .langFancyNames)
+        if langList.isEmpty {
+            langFancyNames = [:]
+        } else {
+            langFancyNames = try values.decode([String: String].self, forKey: .langFancyNames)
+        }
         updateInfo = try values.decode(UpdateInfo.self, forKey: .updateInfo)
     }
 }
@@ -70,9 +74,9 @@ extension UUPDetails {
             arch = try values.decode(String.self, forKey: .arch)
             build = try values.decode(String.self, forKey: .build)
             checkBuild = try values.decode(String.self, forKey: .checkBuild)
-            sku = try values.decode(Int.self, forKey: .sku)
-            created = try values.decode(Int.self, forKey: .created)
-            sha256ready = try values.decode(Bool.self, forKey: .sha256ready)
+            sku = try values.decodeIfPresent(Int.self, forKey: .sku) ?? 0
+            created = try values.decodeIfPresent(Int.self, forKey: .created) ?? 0
+            sha256ready = try values.decodeIfPresent(Bool.self, forKey: .sha256ready) ?? false
         }
     }
 }
