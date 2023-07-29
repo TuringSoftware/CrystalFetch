@@ -71,10 +71,37 @@ class Worker: ObservableObject {
         }
     }
     
+    func lookupPossibleLocale(fromBuildDetails buildDetails: UUPDetails, withPreferredLanguage language: String? = nil) -> String {
+        // There is a naming conversation required for UUP API and macOS API
+        //  see https://github.com/TuringSoftware/CrystalFetch/issues/2 for details
+        let localeMapper = [
+            "zh-hans-cn": "zh-cn"
+        ]
+        
+        var decisionLocale = language ?? defaultLocale
+        if !buildDetails.langList.contains(decisionLocale),
+           let convertor = localeMapper[decisionLocale]
+        {
+            // unable to find this locale, check naming conversation if possible
+            decisionLocale = convertor
+        }
+        if !buildDetails.langList.contains(decisionLocale) {
+            // unable to find this locale, use the English if possible
+            decisionLocale = "en-us"
+        }
+        if !buildDetails.langList.contains(decisionLocale) {
+            // unable to find the en-us, use the first value supported if possible
+            decisionLocale = buildDetails.langList.first ?? ""
+        }
+        // if still not possible, throw the error UNSUPPORTED_LANG from server side
+        return decisionLocale
+    }
+    
     func refreshDetails(uuid: String, language: String? = nil, _ onCompletion: @escaping (BuildDetails, BuildEditions) -> Void) {
         withBusyIndication { [self] in
             let detailsResponse = try await api.fetchDetails(for: uuid)
-            let editionsResponse = try await api.fetchEditions(for: uuid, language: language ?? defaultLocale)
+            let language = lookupPossibleLocale(fromBuildDetails: detailsResponse, withPreferredLanguage: language)
+            let editionsResponse = try await api.fetchEditions(for: uuid, language: language)
             onCompletion(BuildDetails(from: detailsResponse), BuildEditions(from: editionsResponse))
         }
     }
