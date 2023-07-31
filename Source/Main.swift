@@ -24,6 +24,8 @@ struct Main: App {
         WindowGroup {
             ContentView().environmentObject(worker)
                 .frame(minWidth: 800, minHeight: 400)
+        }.commands {
+            SidebarCommands()
         }
     }
 }
