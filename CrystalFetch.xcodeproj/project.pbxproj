@@ -843,6 +843,7 @@
 		CEC0A2FF2A70A6CD00980857 /* convert_ve_plugin */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = convert_ve_plugin; sourceTree = "<group>"; };
 		CEC0A3082A71BBA900980857 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
 		CEC8BC512A7B55D80042878F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEC8BC532A7B56280042878F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1509,6 +1510,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = CEC09F022A6BB66200980857;
 			packageReferences = (
@@ -1957,6 +1959,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				CEC8BC512A7B55D80042878F /* en */,
+				CEC8BC532A7B56280042878F /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1969,6 +1972,7 @@
 			baseConfigurationReference = CEC0A3082A71BBA900980857 /* Build.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -2033,6 +2037,7 @@
 			baseConfigurationReference = CEC0A3082A71BBA900980857 /* Build.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

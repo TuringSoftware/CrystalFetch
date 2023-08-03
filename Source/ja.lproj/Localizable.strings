@@ -1,0 +1,50 @@
+
+/* Sources */
+
+// UUPDump/UUPDumpAPI.swift
+"Cannot find data from the server response." = "サーバの応答からデータが見つかりません。";
+"Error returned from server: %@" = "サーバからエラーが返されました: %@";
+
+// UUPDump/PrettyString.swift
+"Intel x86" = "Intel（32ビット）";
+"Intel x64" = "Intel（64ビット）";
+"Apple Silicon" = "Appleシリコン";
+"Unknown" = "不明";
+"Development" = "Dev";
+"Beta" = "Beta";
+"Canary" = "Canary";
+"Release Preview" = "Release Preview";
+"Retail" = "Retail";
+
+// ContentView.swift
+"Prerelease Builds" = "プレリリースビルド";
+"Show unstable releases which previews upcoming features." = "今後の機能をプレビューする不安定なリリースを表示します。";
+"Server Builds" = "サーバビルド";
+"Show builds for running in a server environment." = "サーバ環境で実行するためのビルドを表示します。";
+"Refresh" = "更新";
+
+// BuildConfigView.swift
+"Channel" = "チャネル";
+"Build" = "ビルド";
+"Created" = "作成日時";
+"Language" = "言語";
+"Editions" = "エディション";
+"I agree that I have a valid license to use this product." = "この製品を使用するための有効なライセンスを所有していることに同意します。";
+"Cancel" = "キャンセル";
+"Are you sure you want to stop the process?" = "処理を停止してもよろしいですか?";
+"Stop" = "停止";
+"Download…" = "ダウンロード…";
+
+// BuildDetails.swift
+"Unknown Language" = "不明な言語";
+
+// BuildEditions.swift
+"Unknown Edition" = "不明なエディション";
+
+// Worker.swift
+"Fetching files list..." = "ファイルリストを取得中…";
+"Starting download..." = "ダウンロードを開始中…";
+"Downloading %@ of %@..." = "ダウンロード中…（%1$@ / %2$@）";
+"Converting download to ISO..." = "ダウンロードをISOに変換中…";
+"Saving ISO..." = "ISOを保存中…";
+"The conversion script failed with error code %d" = "変換スクリプトはエラーコード%dで失敗しました";
