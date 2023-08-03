@@ -360,6 +360,7 @@
 		CEC0A2FC2A70A48200980857 /* aria2c in Copy Executables */ = {isa = PBXBuildFile; fileRef = CEC0A2F32A70A43100980857 /* aria2c */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CEC0A3002A70A6CD00980857 /* convert.sh in Copy Scripts */ = {isa = PBXBuildFile; fileRef = CEC0A2FE2A70A6CD00980857 /* convert.sh */; };
 		CEC0A3012A70A6CD00980857 /* convert_ve_plugin in Copy Scripts */ = {isa = PBXBuildFile; fileRef = CEC0A2FF2A70A6CD00980857 /* convert_ve_plugin */; };
+		CEC8BC502A7B55D80042878F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BC522A7B55D80042878F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -841,6 +842,7 @@
 		CEC0A2FE2A70A6CD00980857 /* convert.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = convert.sh; sourceTree = "<group>"; };
 		CEC0A2FF2A70A6CD00980857 /* convert_ve_plugin */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = convert_ve_plugin; sourceTree = "<group>"; };
 		CEC0A3082A71BBA900980857 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
+		CEC8BC512A7B55D80042878F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -937,6 +939,7 @@
 				CEC09F122A6BB66300980857 /* Assets.xcassets */,
 				CEC09F172A6BB66300980857 /* CrystalFetch.entitlements */,
 				CEC09F3E2A6F151800980857 /* CrystalFetch-Info.plist */,
+				CEC8BC522A7B55D80042878F /* Localizable.strings */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -1530,6 +1533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC09F132A6BB66300980857 /* Assets.xcassets in Resources */,
+				CEC8BC502A7B55D80042878F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1947,6 +1951,17 @@
 			targetProxy = CEC0A2FA2A70A47300980857 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CEC8BC522A7B55D80042878F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEC8BC512A7B55D80042878F /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CEC09F182A6BB66300980857 /* Debug */ = {
