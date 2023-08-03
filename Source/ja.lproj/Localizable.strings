@@ -31,8 +31,8 @@
 "Editions" = "エディション";
 "I agree that I have a valid license to use this product." = "この製品を使用するための有効なライセンスを所有していることに同意します。";
 "Cancel" = "キャンセル";
-"Are you sure you want to stop the process?" = "処理を停止してもよろしいですか?";
-"Stop" = "停止";
+"Are you sure you want to stop the process?" = "処理を中止してもよろしいですか?";
+"Stop" = "中止";
 "Download…" = "ダウンロード…";
 
 // BuildDetails.swift
