@@ -176,7 +176,7 @@ private struct DisplayString: Identifiable, Hashable, Equatable {
     var display: String
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+        hasher.combine(display)
     }
     
     static func ==(lhs: DisplayString, rhs: DisplayString) -> Bool {
