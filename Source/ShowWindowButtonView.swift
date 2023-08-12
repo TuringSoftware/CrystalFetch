@@ -55,8 +55,10 @@ private struct ShowWindowButtonViewNew<Label: View>: View {
     }
 }
 
-#Preview {
-    ShowWindowButtonView(id: "UUPDump") {
-        Text("All builds…")
+struct ShowWindowButtonView_Previews: PreviewProvider {
+    static var previews: some View {
+        ShowWindowButtonView(id: "UUPDump") {
+            Text("All builds…")
+        }
     }
 }

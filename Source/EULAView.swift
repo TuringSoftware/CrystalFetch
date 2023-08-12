@@ -62,8 +62,10 @@ struct EULAView: View {
     }
 }
 
-#Preview {
-    EULAView(url: URL(string: "https://www.google.com/")!) {
-        
+struct EULAView_Previews: PreviewProvider {
+    static var previews: some View {
+        EULAView(url: URL(string: "https://www.google.com/")!) {
+            
+        }
     }
 }

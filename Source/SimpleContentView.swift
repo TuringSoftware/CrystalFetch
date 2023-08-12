@@ -212,6 +212,8 @@ private struct SelectedEULA: Identifiable {
     }
 }
 
-#Preview {
-    SimpleContentView()
+struct SimpleContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        SimpleContentView()
+    }
 }
