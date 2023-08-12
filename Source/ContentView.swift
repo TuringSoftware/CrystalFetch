@@ -54,6 +54,12 @@ struct ContentView: View {
                     ProgressView()
                 }
             }
+            ToolbarItem(placement: .navigation) {
+                ShowWindowButtonView(id: "ESDConvert") {
+                    Label("Simple…", systemImage: "arrowshape.turn.up.backward.fill")
+                }.disabled(worker.isBusy)
+                .help("Build installation for the latest release through ESD conversion.")
+            }
             ToolbarItem(placement: .principal) {
                 Button {
                     worker.refresh(findDefault: true)

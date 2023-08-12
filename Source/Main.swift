@@ -21,16 +21,16 @@ struct Main: App {
     @StateObject private var worker = Worker()
     
     var body: some Scene {
-        WindowGroup(id: "simple") {
+        WindowGroup(id: "ESDConvert") {
             SimpleContentView().environmentObject(worker)
                 .frame(minWidth: 500, idealWidth: 500, minHeight: 300, idealHeight: 300)
-        }
+        }.handlesExternalEvents(matching: Set(["ESDConvert"]))
         
-        WindowGroup(id: "advanced") {
+        WindowGroup(id: "UUPDump") {
             ContentView().environmentObject(worker)
                 .frame(minWidth: 800, minHeight: 400)
         }.commands {
             SidebarCommands()
-        }
+        }.handlesExternalEvents(matching: Set(["UUPDump"]))
     }
 }

@@ -29,8 +29,6 @@ struct SimpleContentView: View {
     @State private var languages: [DisplayString] = []
     @State private var editions: [DisplayString] = []
     
-    @Environment(\.openWindow) private var openWindow
-    
     var body: some View {
         VStack {
             Form {
@@ -87,11 +85,10 @@ struct SimpleContentView: View {
                 }
             }
             HStack {
-                Button {
-                    
-                } label: {
+                ShowWindowButtonView(id: "UUPDump") {
                     Text("All builds…")
                 }.disabled(worker.isBusy)
+                .help("Build custom installation for any build through UUP Dump.")
                 Spacer()
                 if worker.isBusy {
                     Button(role: .cancel) {
@@ -133,6 +130,7 @@ struct SimpleContentView: View {
         .padding()
         .onAppear {
             worker.refreshEsdCatalog()
+            refreshList()
         }
         .onChange(of: worker.completedDownloadUrl) { newValue in
             if newValue != nil {
