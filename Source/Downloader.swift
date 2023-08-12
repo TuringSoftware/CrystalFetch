@@ -81,7 +81,8 @@ actor Downloader {
     
     private func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         totalDownloadedSize += bytesWritten
-        progressCallback?(totalDownloadedSize, totalExpectedSize)
+        let expectedSize = totalExpectedSize > 0 ? totalExpectedSize : totalBytesExpectedToWrite
+        progressCallback?(totalDownloadedSize, expectedSize)
     }
     
     private func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
@@ -99,7 +100,7 @@ actor Downloader {
     ///   - downloadUrl: What to download
     ///   - destinationUrl: Where to put it
     ///   - size: Estimated size for progress updates
-    func enqueue(downloadUrl: URL, to destinationUrl: URL, size: Int64) {
+    func enqueue(downloadUrl: URL, to destinationUrl: URL, size: Int64 = 0) {
         let task = session.downloadTask(with: downloadUrl)
         queue.append((task: task, destinationUrl: destinationUrl, retry: kMaxRetries))
         totalExpectedSize += size
@@ -107,6 +108,9 @@ actor Downloader {
     
     /// Start downloading a single item from the queue and retry if the download is interrupted
     private func dequeue() async throws {
+        guard !queue.isEmpty else {
+            return
+        }
         let (task, destinationUrl, retry) = queue.removeFirst()
         let debugIdentifier = task.originalRequest?.url?.absoluteString ?? "(unknown request)"
         NSLog("Downloading %@ to %@ (retries left: %d)", debugIdentifier, destinationUrl.path, retry)

@@ -22,8 +22,11 @@ Credits
 -------
 CrystalFetch uses [UUPDump][3] APIs and converter scripts.
 
+CrystalFetch uses [esd2iso][4] by Technogeezer.
+
 This project is not affiliated with Microsoft Corporation. Windows® is a registered trademark of Microsoft Corporation.
 
   [1]: https://github.com/TuringSoftware/CrystalFetch/actions?query=event%3Arelease+workflow%3ABuild
   [2]: https://mac.getutm.app
   [3]: https://uupdump.net
+  [4]: https://communities.vmware.com/t5/VMware-Fusion-Documents/w11arm-esd2iso-a-utility-to-create-Windows-11-ARM-ISOs-from/ta-p/2957381

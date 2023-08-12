@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		844A8EFB2A860F91009A389C /* ESDCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A8EFA2A860F91009A389C /* ESDCatalog.swift */; };
+		844A8EFF2A86CA8C009A389C /* SimpleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A8EFE2A86CA8C009A389C /* SimpleContentView.swift */; };
+		844A8F032A86E86F009A389C /* EULAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A8F022A86E86F009A389C /* EULAView.swift */; };
+		844A8F062A86F92F009A389C /* esd2iso.sh in Resources */ = {isa = PBXBuildFile; fileRef = 844A8F052A86F92F009A389C /* esd2iso.sh */; };
 		CEC09F0F2A6BB66200980857 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F0E2A6BB66200980857 /* Main.swift */; };
 		CEC09F112A6BB66200980857 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F102A6BB66200980857 /* ContentView.swift */; };
 		CEC09F132A6BB66300980857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC09F122A6BB66300980857 /* Assets.xcassets */; };
@@ -487,6 +491,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		844A8EFA2A860F91009A389C /* ESDCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESDCatalog.swift; sourceTree = "<group>"; };
+		844A8EFE2A86CA8C009A389C /* SimpleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleContentView.swift; sourceTree = "<group>"; };
+		844A8F022A86E86F009A389C /* EULAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAView.swift; sourceTree = "<group>"; };
+		844A8F052A86F92F009A389C /* esd2iso.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = esd2iso.sh; sourceTree = "<group>"; };
 		CEC09F0B2A6BB66200980857 /* CrystalFetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalFetch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC09F0E2A6BB66200980857 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		CEC09F102A6BB66200980857 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -893,11 +901,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		844A8EF92A860DF6009A389C /* ESDCatalog */ = {
+			isa = PBXGroup;
+			children = (
+				844A8EFA2A860F91009A389C /* ESDCatalog.swift */,
+			);
+			path = ESDCatalog;
+			sourceTree = "<group>";
+		};
+		844A8F042A86F911009A389C /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				844A8F052A86F92F009A389C /* esd2iso.sh */,
+			);
+			path = Extras;
+			sourceTree = "<group>";
+		};
 		CEC09F022A6BB66200980857 = {
 			isa = PBXGroup;
 			children = (
 				CEC0A3082A71BBA900980857 /* Build.xcconfig */,
 				CEC09F0D2A6BB66200980857 /* Source */,
+				844A8F042A86F911009A389C /* Extras */,
 				CEC0A3022A70A6D500980857 /* converter */,
 				CEC09F442A6F645400980857 /* cabextract */,
 				CEC09FD42A6F771C00980857 /* mkisofs */,
@@ -925,10 +950,13 @@
 		CEC09F0D2A6BB66200980857 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				844A8EF92A860DF6009A389C /* ESDCatalog */,
 				CEC09F292A6DC37800980857 /* UUPDump */,
 				CEC09F0E2A6BB66200980857 /* Main.swift */,
 				CEC09F102A6BB66200980857 /* ContentView.swift */,
+				844A8EFE2A86CA8C009A389C /* SimpleContentView.swift */,
 				CEC09F3C2A6EECC700980857 /* Downloader.swift */,
+				844A8F022A86E86F009A389C /* EULAView.swift */,
 				CEC09F252A6DAB7E00980857 /* BuildConfigView.swift */,
 				CEC09F362A6E5B7600980857 /* BuildDetails.swift */,
 				CEC09F382A6E5D5C00980857 /* BuildEditions.swift */,
@@ -1529,6 +1557,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844A8F062A86F92F009A389C /* esd2iso.sh in Resources */,
 				CEC09F132A6BB66300980857 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1542,8 +1571,10 @@
 			files = (
 				CEC09F112A6BB66200980857 /* ContentView.swift in Sources */,
 				CEC09F312A6DC8FB00980857 /* UUPPackage.swift in Sources */,
+				844A8EFF2A86CA8C009A389C /* SimpleContentView.swift in Sources */,
 				CEC09F332A6DCA2C00980857 /* UUPDumpAPI.swift in Sources */,
 				CEC09F282A6DBED400980857 /* Worker.swift in Sources */,
+				844A8EFB2A860F91009A389C /* ESDCatalog.swift in Sources */,
 				CEC09F262A6DAB7E00980857 /* BuildConfigView.swift in Sources */,
 				CEC09F0F2A6BB66200980857 /* Main.swift in Sources */,
 				CEC09F372A6E5B7600980857 /* BuildDetails.swift in Sources */,
@@ -1552,6 +1583,7 @@
 				CEC09F2D2A6DC60500980857 /* UUPDetails.swift in Sources */,
 				CEC09F352A6DF33C00980857 /* BuildsListView.swift in Sources */,
 				CEC09F392A6E5D5C00980857 /* BuildEditions.swift in Sources */,
+				844A8F032A86E86F009A389C /* EULAView.swift in Sources */,
 				CEC09F2F2A6DC72000980857 /* UUPEditions.swift in Sources */,
 				CEC09F2B2A6DC40900980857 /* UUPBuilds.swift in Sources */,
 			);

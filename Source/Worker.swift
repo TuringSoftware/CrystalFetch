@@ -36,6 +36,8 @@ class Worker: ObservableObject {
     @Published private(set) var progressStatus: String?
     @Published var completedDownloadUrl: URL?
     
+    @Published var esdCatalog: [ESDCatalog.File] = []
+    
     private let api = UUPDumpAPI()
     private var runningTask: (Task<Void, Never>)?
     private var lastErrorLine: String?
@@ -56,8 +58,17 @@ class Worker: ObservableObject {
         UserDefaults.standard.bool(forKey: "ShowServerBuilds")
     }
     
-    var defaultLocale: String {
-        UserDefaults.standard.string(forKey: "LastSelectedLocale") ?? Locale.preferredLanguages.first?.lowercased() ?? "netural"
+    static nonisolated var defaultLocale: String? {
+        // There is a naming conversation required for UUP API and macOS API
+        //  see https://github.com/TuringSoftware/CrystalFetch/issues/2 for details
+        let localeMapper = [
+            "zh-hans-cn": "zh-cn"
+        ]
+        if let preferred = UserDefaults.standard.string(forKey: "LastSelectedLocale") ?? Locale.preferredLanguages.first?.lowercased() {
+            return localeMapper[preferred] ?? preferred
+        } else {
+            return nil
+        }
     }
     
     func refresh(findDefault: Bool = false) {
@@ -72,19 +83,7 @@ class Worker: ObservableObject {
     }
     
     func lookupPossibleLocale(fromBuildDetails buildDetails: UUPDetails, withPreferredLanguage language: String? = nil) -> String {
-        // There is a naming conversation required for UUP API and macOS API
-        //  see https://github.com/TuringSoftware/CrystalFetch/issues/2 for details
-        let localeMapper = [
-            "zh-hans-cn": "zh-cn"
-        ]
-        
-        var decisionLocale = language ?? defaultLocale
-        if !buildDetails.langList.contains(decisionLocale),
-           let convertor = localeMapper[decisionLocale]
-        {
-            // unable to find this locale, check naming conversation if possible
-            decisionLocale = convertor
-        }
+        var decisionLocale = language ?? Self.defaultLocale ?? "netural"
         if !buildDetails.langList.contains(decisionLocale) {
             // unable to find this locale, use the English if possible
             decisionLocale = "en-us"
@@ -182,16 +181,22 @@ class Worker: ObservableObject {
     
     private func convert(files url: URL) async throws {
         let script = Bundle.main.url(forResource: "convert", withExtension: "sh")!
+        try await exec(at: url, executableURL: script, "wim", ".", "1")
+        completedDownloadUrl = findIso(at: url)
+    }
+    
+    @discardableResult
+    private func execv(at currentDirectoryURL: URL?, executableURL: URL, _ args: [String]) async throws -> Int32 {
         let executablePath = Bundle.main.executableURL!.deletingLastPathComponent().path
         let process = Process()
-        process.executableURL = script
-        process.currentDirectoryURL = url
+        process.executableURL = executableURL
+        process.currentDirectoryURL = currentDirectoryURL
         process.environment = ["PATH": "\(executablePath):/usr/bin:/bin:/usr/sbin:/sbin"]
-        process.arguments = ["wim", ".", "1"]
+        process.arguments = args
         let outputPipe = Pipe()
         outputPipe.fileHandleForReading.readabilityHandler = { handle in
             if let line = self.extractLine(from: handle.availableData) {
-                NSLog("[convert.sh stdout]: %@", line)
+                NSLog("[%@ stdout]: %@", executableURL.lastPathComponent, line)
                 Task { @MainActor in
                     self.progressStatus = line
                 }
@@ -200,7 +205,7 @@ class Worker: ObservableObject {
         let errorPipe = Pipe()
         errorPipe.fileHandleForReading.readabilityHandler = { handle in
             if let line = self.extractLine(from: handle.availableData) {
-                NSLog("[convert.sh stderr]: %@", line)
+                NSLog("[%@ stderr]: %@", executableURL.lastPathComponent, line)
                 Task { @MainActor in
                     self.lastErrorLine = line
                 }
@@ -236,7 +241,19 @@ class Worker: ObservableObject {
         } onCancel: {
             process.terminate()
         }
-        completedDownloadUrl = findIso(at: url)
+        return process.terminationStatus
+    }
+    
+    @discardableResult
+    private func exec(at currentDirectoryURL: URL?, executableURL: URL, _ args: String...) async throws -> Int32 {
+        try await execv(at: currentDirectoryURL, executableURL: executableURL, args)
+    }
+    
+    @discardableResult
+    private func exec(_ args: String...) async throws -> Int32 {
+        let executableURL = Bundle.main.url(forAuxiliaryExecutable: args[0])!
+        let args = Array(args.dropFirst())
+        return try await execv(at: nil, executableURL: executableURL, args)
     }
     
     func finalize(isoUrl: URL, destinationUrl: URL) {
@@ -284,6 +301,101 @@ class Worker: ObservableObject {
             progress = 0.0
             progressStatus = nil
         }
+    }
+}
+
+// MARK: - ESD Catalog
+extension Worker {
+    private var windows10CatalogUrl: URL {
+        URL(string: "https://go.microsoft.com/fwlink/?LinkId=841361")!
+    }
+    
+    private var windows11CatalogUrl: URL {
+        URL(string: "https://go.microsoft.com/fwlink?linkid=2156292")!
+    }
+    
+    func refreshEsdCatalog(windows10: Bool = false) {
+        let cacheUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let catalogUrl = cacheUrl.appendingPathComponent("catalog.cab")
+        let productsUrl = cacheUrl.appendingPathComponent("products.xml")
+        withBusyIndication { [self] in
+            let fm = FileManager.default
+            let downloader = Downloader()
+            try? fm.removeItem(at: catalogUrl)
+            if windows10 {
+                await downloader.enqueue(downloadUrl: windows10CatalogUrl, to: catalogUrl)
+            } else {
+                await downloader.enqueue(downloadUrl: windows11CatalogUrl, to: catalogUrl)
+            }
+            try await downloader.start()
+            try await exec("cabextract", "-d", cacheUrl.path, catalogUrl.path)
+            let data = try Data(contentsOf: productsUrl)
+            let esd = try await ESDCatalog(from: data)
+            esdCatalog = await esd.files
+        }
+    }
+    
+    func download(_ file: ESDCatalog.File) {
+        let cacheUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let baseUrl = cacheUrl.appendingPathComponent(UUID().uuidString)
+        let esdUrl = baseUrl.appendingPathComponent(file.name)
+        let isoUrl = esdUrl.deletingPathExtension().appendingPathExtension("iso")
+        withBusyIndication { [self] in
+            let fm = FileManager.default
+            if fm.fileExists(atPath: isoUrl.path) {
+                completedDownloadUrl = isoUrl
+                return
+            }
+            try? fm.removeItem(at: baseUrl)
+            try fm.createDirectory(at: baseUrl, withIntermediateDirectories: true)
+            let idleAssertion = requestIdleAssertion()
+            defer {
+                if let idleAssertion = idleAssertion {
+                    releaseIdleAssertion(idleAssertion)
+                }
+            }
+            completedDownloadUrl = nil
+            progress = 0.0
+            progressStatus = NSLocalizedString("Starting download...", comment: "Worker")
+            let downloader = Downloader()
+            await downloader.enqueue(downloadUrl: URL(string: file.filePath)!, to: esdUrl)
+            try await downloader.start { bytesWritten, bytesTotal in
+                let written = ByteCountFormatter.string(fromByteCount: bytesWritten, countStyle: .file)
+                let total = ByteCountFormatter.string(fromByteCount: bytesTotal, countStyle: .file)
+                Task { @MainActor in
+                    self.progressStatus = String.localizedStringWithFormat(NSLocalizedString("Downloading %@ of %@...", comment: "Worker"), written, total)
+                    let progress = (Float(bytesWritten) / Float(bytesTotal))
+                    self.progress = progress > 1.0 ? 1.0 : progress
+                }
+            }
+            progressStatus = NSLocalizedString("Converting download to ISO...", comment: "Worker")
+            progress = nil
+            try await convert(esd: esdUrl, to: isoUrl)
+        }
+    }
+    
+    private func convert(esd esdUrl: URL, to isoUrl: URL) async throws {
+        let script = Bundle.main.url(forResource: "esd2iso", withExtension: "sh")!
+        var build = buildString(from: esdUrl.lastPathComponent)
+        if build.count > 32 {
+            build = String(build.prefix(32))
+        }
+        try await exec(at: nil, executableURL: script, esdUrl.path, isoUrl.path, build)
+        completedDownloadUrl = isoUrl
+    }
+    
+    private func buildString(from name: String) -> String {
+        var count = 0
+        for (index, ch) in name.enumerated() {
+            if ch == "." {
+                count += 1
+            }
+            if count == 3 {
+                let endIndex = name.index(name.startIndex, offsetBy: index-1)
+                return String(name[name.startIndex...endIndex])
+            }
+        }
+        return name
     }
 }
 

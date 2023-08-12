@@ -136,7 +136,7 @@ struct BuildConfigView: View {
                 if let lastSelectedLocale = lastSelectedLocale {
                     selectedLocale = lastSelectedLocale
                 } else {
-                    selectedLocale = worker.defaultLocale
+                    selectedLocale = Worker.defaultLocale ?? "netural"
                 }
             }
         }

@@ -21,7 +21,12 @@ struct Main: App {
     @StateObject private var worker = Worker()
     
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: "simple") {
+            SimpleContentView().environmentObject(worker)
+                .frame(minWidth: 500, idealWidth: 500, minHeight: 300, idealHeight: 300)
+        }
+        
+        WindowGroup(id: "advanced") {
             ContentView().environmentObject(worker)
                 .frame(minWidth: 800, minHeight: 400)
         }.commands {
