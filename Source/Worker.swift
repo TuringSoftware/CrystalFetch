@@ -174,7 +174,7 @@ class Worker: ObservableObject {
             let lines = string.split(whereSeparator: \.isNewline)
             if let line = lines.filter({ !$0.isEmpty }).last {
                 let stringLine = String(line)
-                if let pattern = try? NSRegularExpression(pattern: "\\[(0|1).*?m") {
+                if let pattern = try? NSRegularExpression(pattern: "\\033\\[(0|1).*?m") {
                     return pattern.stringByReplacingMatches(in: stringLine, range: NSRange(location: 0, length: stringLine.count), withTemplate: "")
                 }
                 return stringLine
