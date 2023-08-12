@@ -380,7 +380,7 @@ extension Worker {
         if build.count > 32 {
             build = String(build.prefix(32))
         }
-        try await exec(at: nil, executableURL: script, esdUrl.path, isoUrl.path, build)
+        try await exec(at: nil, executableURL: script, "-v", esdUrl.path, isoUrl.path, build)
         completedDownloadUrl = isoUrl
     }
     
