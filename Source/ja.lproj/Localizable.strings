@@ -1,6 +1,14 @@
 
 /* Sources */
 
+// ESDCatalog/ESDCatalog.swift
+"Unknown parser error." = "不明な解析エラーです。";
+"Failed to parse element '%@'" = "要素“%@”の解析に失敗しました";
+"Attribute '%@' not found" = "属性“%@”が見つかりません";
+"Unexpected string '%@' for field '%@'" = "フィールド“%2$@”に予期しない文字列“%1$@”があります";
+"Localization '%@' not found" = "ローカリゼーション“%@”が見つかりません";
+"Missing element '%@' in '%@'" = "“%2$@”に要素“%1$@”がありません";
+
 // UUPDump/UUPDumpAPI.swift
 "Cannot find data from the server response." = "サーバの応答からデータが見つかりません。";
 "Error returned from server: %@" = "サーバからエラーが返されました: %@";
@@ -21,19 +29,35 @@
 "Show unstable releases which previews upcoming features." = "今後の機能をプレビューする不安定なリリースを表示します。";
 "Server Builds" = "サーバビルド";
 "Show builds for running in a server environment." = "サーバ環境で実行するためのビルドを表示します。";
+"Simple…" = "シンプル…";
+"Build installation for the latest release through ESD conversion." = "ESD変換により最新リリースのインストールをビルドします。";
 "Refresh" = "更新";
+
+// SimpleContentView.swift
+"Version" = "バージョン";
+"Windows® 11" = "Windows® 11";
+"Windows® 10" = "Windows® 10";
+"Architecture" = "アーキテクチャ";
+"Language" = "言語";
+"Edition" = "エディション";
+"All builds…" = "すべてのビルド…";
+"Build custom installation for any build through UUP Dump." = "UUP dumpにより任意のビルドのカスタムインストールをビルドします。";
+"Cancel" = "キャンセル";
+"Are you sure you want to stop the process?" = "処理を中止してもよろしいですか?";
+"Stop" = "中止";
+"Download…" = "ダウンロード…";
+"No build found." = "ビルドが見つかりません。";
+
+// EULAView.swift
+"Failed to load EULA." = "使用許諾契約の読み込みに失敗しました。";
+"Accept" = "同意";
 
 // BuildConfigView.swift
 "Channel" = "チャネル";
 "Build" = "ビルド";
 "Created" = "作成日時";
-"Language" = "言語";
 "Editions" = "エディション";
 "I agree that I have a valid license to use this product." = "この製品を使用するための有効なライセンスを所有していることに同意します。";
-"Cancel" = "キャンセル";
-"Are you sure you want to stop the process?" = "処理を中止してもよろしいですか?";
-"Stop" = "中止";
-"Download…" = "ダウンロード…";
 
 // BuildDetails.swift
 "Unknown Language" = "不明な言語";
