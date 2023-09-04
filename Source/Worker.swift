@@ -170,10 +170,14 @@ class Worker: ObservableObject {
     }
     
     private nonisolated func extractLine(from data: Data) -> String? {
-        if let string = String(data: data, encoding: .ascii)?.filter({ $0.isASCII }) {
+        if let string = String(data: data, encoding: .utf8) {
             let lines = string.split(whereSeparator: \.isNewline)
             if let line = lines.filter({ !$0.isEmpty }).last {
-                return String(line)
+                let stringLine = String(line)
+                if let pattern = try? NSRegularExpression(pattern: "\\033\\[(0|1).*?m") {
+                    return pattern.stringByReplacingMatches(in: stringLine, range: NSRange(location: 0, length: stringLine.count), withTemplate: "")
+                }
+                return stringLine
             }
         }
         return nil
