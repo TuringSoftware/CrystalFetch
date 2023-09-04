@@ -366,6 +366,7 @@
 		CEC0A3002A70A6CD00980857 /* convert.sh in Copy Scripts */ = {isa = PBXBuildFile; fileRef = CEC0A2FE2A70A6CD00980857 /* convert.sh */; };
 		CEC0A3012A70A6CD00980857 /* convert_ve_plugin in Copy Scripts */ = {isa = PBXBuildFile; fileRef = CEC0A2FF2A70A6CD00980857 /* convert_ve_plugin */; };
 		CEC8BC502A7B55D80042878F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BC522A7B55D80042878F /* Localizable.strings */; };
+		FFB1B52A2A929CEC00B95D56 /* CrystalFetch-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFB1B5282A929CEC00B95D56 /* CrystalFetch-InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -854,6 +855,8 @@
 		CEC0A3082A71BBA900980857 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
 		CEC8BC512A7B55D80042878F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEC8BC532A7B56280042878F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FFB1B5272A929A2800B95D56 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		FFB1B5292A929CEC00B95D56 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CrystalFetch-InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -971,6 +974,7 @@
 				CEC09F122A6BB66300980857 /* Assets.xcassets */,
 				CEC09F172A6BB66300980857 /* CrystalFetch.entitlements */,
 				CEC09F3E2A6F151800980857 /* CrystalFetch-Info.plist */,
+				FFB1B5282A929CEC00B95D56 /* CrystalFetch-InfoPlist.strings */,
 				CEC8BC522A7B55D80042878F /* Localizable.strings */,
 			);
 			path = Source;
@@ -1542,6 +1546,7 @@
 				en,
 				Base,
 				ja,
+				"zh-Hant",
 			);
 			mainGroup = CEC09F022A6BB66200980857;
 			packageReferences = (
@@ -1568,6 +1573,7 @@
 				844A8F062A86F92F009A389C /* esd2iso.sh in Resources */,
 				CEC09F132A6BB66300980857 /* Assets.xcassets in Resources */,
 				CEC8BC502A7B55D80042878F /* Localizable.strings in Resources */,
+				FFB1B52A2A929CEC00B95D56 /* CrystalFetch-InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1996,8 +2002,17 @@
 			children = (
 				CEC8BC512A7B55D80042878F /* en */,
 				CEC8BC532A7B56280042878F /* ja */,
+				FFB1B5272A929A2800B95D56 /* zh-Hant */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		FFB1B5282A929CEC00B95D56 /* CrystalFetch-InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFB1B5292A929CEC00B95D56 /* zh-Hant */,
+			);
+			name = "CrystalFetch-InfoPlist.strings";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
