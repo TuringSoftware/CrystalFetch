@@ -33,13 +33,13 @@ declare -a lTags
 declare -a lDesc
 
 usage() {
-  echo "Usage:\n"
-  echo "$0 [-v]"
-  echo "$0 [-Vh]"
-  echo "\nOptions:"
-  echo "\t-h\tPrint usage and exit"
-  echo "\t-v\tEnable verbose output"
-  echo "\t-V\tPrint program version and exit"
+	echo "Usage:\n"
+	echo "$0 [-v]"
+	echo "$0 [-Vh]"
+	echo "\nOptions:"
+	echo "\t-h\tPrint usage and exit"
+	echo "\t-v\tEnable verbose output"
+	echo "\t-V\tPrint program version and exit"
 }
 printVersion() {
 	echo $version
@@ -162,8 +162,8 @@ buildIso(){
 	iFile=$2
 	
 	if [ -e $iFile ]; then
-	  echo "\t[INFO] File $iFile exists, removing it"
-	  rm -rf $iFile
+		echo "\t[INFO] File $iFile exists, removing it"
+		rm -rf $iFile
 	fi
 
 	elToritoBootFile=$iDir/efi/microsoft/boot/efisys.bin
@@ -192,31 +192,29 @@ buildIso(){
 #-------------------
 
 while getopts ":hr:vV" opt; do
-  case $opt in
-    h)
-    	usage
-    	exit 1
-    	;;
-    	
-	v)
-    	let verbosityLevel+=1
-    	;;
-	V)
-    	printVersion
-    	exit 1
-    	;;
-    :)
-    	echo "[ERROR] Option -$OPTARG requires an argument"
-    	usage
-    	exit 1
-    	;;
-    
-    \?)
-    	echo "[ERROR] Invalid option: -$OPTARG\n"
-    	usage
-    	exit 1
-    	;;
-    esac
+	case $opt in
+		h)
+			usage
+			exit 1
+			;;
+		v)
+			let verbosityLevel+=1
+			;;
+		V)
+			printVersion
+			exit 1
+			;;
+		:)
+			echo "[ERROR] Option -$OPTARG requires an argument"
+			usage
+			exit 1
+			;;
+		\?)
+			echo "[ERROR] Invalid option: -$OPTARG\n"
+			usage
+			exit 1
+			;;
+		esac
 done
 shift "$((OPTIND-1))"
 
@@ -293,8 +291,8 @@ buildIso $extDir $isoFile $isoLabel
 retVal=$?
 if (( retVal != 0 )); then
 	echo "[ERROR] ISO was NOT created"
-    echo "Working directory $workingDir was not deleted, use for debugging"
-    exit 1
+	echo "Working directory $workingDir was not deleted, use for debugging"
+	exit 1
 fi
 
 echo "Step 4 complete - ISO created"
