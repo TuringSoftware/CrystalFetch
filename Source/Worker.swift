@@ -337,7 +337,8 @@ extension Worker {
     
     func download(_ file: ESDCatalog.File) {
         let cacheUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-        let baseUrl = cacheUrl.appendingPathComponent(UUID().uuidString)
+        let uuid = file.sha1.count > 0 ? file.sha1 : UUID().uuidString
+        let baseUrl = cacheUrl.appendingPathComponent(uuid)
         let esdUrl = baseUrl.appendingPathComponent(file.name)
         let isoUrl = esdUrl.deletingPathExtension().appendingPathExtension("iso")
         withBusyIndication { [self] in
