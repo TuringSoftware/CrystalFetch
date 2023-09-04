@@ -57,6 +57,9 @@ struct SimpleContentView: View {
                         Text(edition.display).tag(edition.id)
                     }
                 }
+                if isWindows10 && selected.architecture == "ARM64" {
+                    Text("Note: This build does not work for virtualization on Apple Silicon.")
+                }
             }.disabled(worker.isBusy)
             .onChange(of: isWindows10) { newValue in
                 worker.refreshEsdCatalog(windows10: newValue)

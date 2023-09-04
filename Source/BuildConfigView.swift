@@ -78,6 +78,9 @@ struct BuildConfigView: View {
                             }))
                         }
                     }
+                    if build.arch == "arm64" && Float(build.build) ?? 0 < 21390.0 {
+                        Text("Note: This build does not work for virtualization on Apple Silicon.")
+                    }
                 }.disabled(worker.isBusy)
             }
             Spacer()
