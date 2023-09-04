@@ -52,7 +52,7 @@ struct BuildConfigView: View {
                     }.padding(.bottom, 5)
                     Section("Language") {
                         Picker("", selection: $selectedLocale) {
-                            ForEach(details.languages) { language in
+                            ForEach(details.sortedLanguages) { language in
                                 Text(language.display).tag(language.code)
                             }
                         }.onChange(of: selectedLocale) { newValue in

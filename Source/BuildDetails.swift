@@ -32,6 +32,10 @@ struct BuildDetails {
     let arch: String
     let build: String
     let created: Date
+
+    var sortedLanguages: [Language] {
+      return languages.sorted(using: KeyPathComparator(\.display))
+    }
     
     static var empty = BuildDetails()
     
