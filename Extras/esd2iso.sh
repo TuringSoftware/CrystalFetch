@@ -76,7 +76,9 @@ extractEsd(){
 	
 	esdImageCount=$(wimlib-imagex info $eFile | $awk '/Image Count:/ {print $3}')
 	verboseOn && echo "[DEBUG] image count in ESD: $esdImageCount"
-	(( $esdImageCount == 6 )) && images+=("6")
+	for (( i = 6; i <= esdImageCount; i++ )); do
+		images+=("$i")
+	done
 
 	#---------------
 	# Extract image 1 in the ESD to create the boot environment
