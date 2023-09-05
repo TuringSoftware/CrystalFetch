@@ -1,1 +1,155 @@
+/* No comment provided by engineer. */
+"Accept" = "接受";
 
+/* No comment provided by engineer. */
+"All builds…" = "所有構建⋯⋯";
+
+/* PrettyString */
+"Apple Silicon" = "Apple 晶片";
+
+/* No comment provided by engineer. */
+"Architecture" = "架構";
+
+/* No comment provided by engineer. */
+"Are you sure you want to stop the process?" = "確定要停止此過程嗎？";
+
+/* ESDCatalog */
+"Attribute '%@' not found" = "未找到屬性「%@」";
+
+/* PrettyString */
+"Beta" = "Beta 版通道";
+
+/* No comment provided by engineer. */
+"Build" = "構建";
+
+/* No comment provided by engineer. */
+"Build custom installation for any build through UUP Dump." = "由 UUP Dump 為任何構建生成自定義安裝程式。";
+
+/* No comment provided by engineer. */
+"Build installation for the latest release through ESD conversion." = "由 ESD 轉換為最新發現版本構建安裝程式。";
+
+/* PrettyString */
+"Canary" = "Canary";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* UUPDumpAPI */
+"Cannot find data from the server response." = "無法從伺服器回應中找到資料。";
+
+/* No comment provided by engineer. */
+"Channel" = "渠道";
+
+/* Worker */
+"Converting download to ISO..." = "正在將下載的資料轉換成 ISO⋯⋯";
+
+/* No comment provided by engineer. */
+"Created" = "創建時間";
+
+/* PrettyString */
+"Development" = "Development";
+
+/* No comment provided by engineer. */
+"Download…" = "下載⋯⋯";
+
+/* Worker */
+"Downloading %@ of %@..." = "正在下載 %1$@/%2$@⋯⋯";
+
+/* No comment provided by engineer. */
+"Edition" = "版本";
+
+/* No comment provided by engineer. */
+"Editions" = "版本";
+
+/* UUPDumpAPI */
+"Error returned from server: %@" = "伺服器返回錯誤：%@";
+
+/* EULAView */
+"Failed to load EULA." = "無法載入 EULA。";
+
+/* ESDCatalog */
+"Failed to parse element '%@'" = "無法解析元素「%@」";
+
+/* Worker */
+"Fetching files list..." = "正在獲取檔案清單⋯⋯";
+
+/* No comment provided by engineer. */
+"I agree that I have a valid license to use this product." = "我同意我擁有使用此產品的有效許可。";
+
+/* PrettyString */
+"Intel x64" = "Intel x64";
+
+/* PrettyString */
+"Intel x86" = "Intel x86";
+
+/* No comment provided by engineer. */
+"Language" = "語言";
+
+/* ESDCatalog */
+"Localization '%@' not found" = "無法找到本地化資料「%@」";
+
+/* ESDCatalog */
+"Missing element '%@' in '%@'" = "「%2$@」中丟失元素「%1$@」";
+
+/* No comment provided by engineer. */
+"No build found." = "無法找到構建。";
+
+/* No comment provided by engineer. */
+"Prerelease Builds" = "預先發布構建";
+
+/* No comment provided by engineer. */
+"Refresh" = "重新整理";
+
+/* PrettyString */
+"Release Preview" = "Release Preview";
+
+/* PrettyString */
+"Retail" = "零售版本通道";
+
+/* Worker */
+"Saving ISO..." = "正在儲存 ISO 檔案…";
+
+/* No comment provided by engineer. */
+"Server Builds" = "伺服器構建";
+
+/* No comment provided by engineer. */
+"Show builds for running in a server environment." = "顯示用於伺服器環境運行的構建。";
+
+/* No comment provided by engineer. */
+"Show unstable releases which previews upcoming features." = "顯示不穩定的發行版本，當中可以預覽將要推出的功能。";
+
+/* No comment provided by engineer. */
+"Simple…" = "簡化…";
+
+/* Worker */
+"Starting download..." = "正在開始下載⋯⋯";
+
+/* No comment provided by engineer. */
+"Stop" = "停止";
+
+/* Worker */
+"The conversion script failed with error code %d" = "執行轉換失敗，錯誤碼為 %d";
+
+/* ESDCatalog */
+"Unexpected string '%@' for field '%@'" = "「%2$@」欄位中出現意外字符串「%1$@」";
+
+/* PrettyString */
+"Unknown" = "未知";
+
+/* BuildEditions */
+"Unknown Edition" = "未知的版本";
+
+/* BuildDetails */
+"Unknown Language" = "未知的語言";
+
+/* ESDCatalog */
+"Unknown parser error." = "未知的解析器錯誤。";
+
+/* No comment provided by engineer. */
+"Version" = "版本";
+
+/* No comment provided by engineer. */
+"Windows® 10" = "Windows® 10";
+
+/* No comment provided by engineer. */
+"Windows® 11" = "Windows® 11";
