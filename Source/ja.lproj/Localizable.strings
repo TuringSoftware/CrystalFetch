@@ -40,6 +40,7 @@
 "Architecture" = "アーキテクチャ";
 "Language" = "言語";
 "Edition" = "エディション";
+"Note: This build does not work for virtualization on Apple Silicon." = "注意: このビルドはAppleシリコン上の仮想化では動作しません。";
 "All builds…" = "すべてのビルド…";
 "Build custom installation for any build through UUP Dump." = "UUP dumpにより任意のビルドのカスタムインストールをビルドします。";
 "Cancel" = "キャンセル";
