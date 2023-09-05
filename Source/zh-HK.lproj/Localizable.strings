@@ -17,7 +17,7 @@
 "Attribute '%@' not found" = "未找到屬性「%@」";
 
 /* PrettyString */
-"Beta" = "Beta 版通道";
+"Beta" = "Beta";
 
 /* No comment provided by engineer. */
 "Build" = "構建";
@@ -38,16 +38,16 @@
 "Cannot find data from the server response." = "無法從伺服器回應中找到資料。";
 
 /* No comment provided by engineer. */
-"Channel" = "渠道";
+"Channel" = "頻道";
 
 /* Worker */
 "Converting download to ISO..." = "正在將下載的資料轉換成 ISO⋯⋯";
 
 /* No comment provided by engineer. */
-"Created" = "創建時間";
+"Created" = "創建於";
 
 /* PrettyString */
-"Development" = "Development";
+"Development" = "開發";
 
 /* No comment provided by engineer. */
 "Download…" = "下載⋯⋯";
@@ -86,7 +86,7 @@
 "Language" = "語言";
 
 /* ESDCatalog */
-"Localization '%@' not found" = "無法找到本地化資料「%@」";
+"Localization '%@' not found" = "無法找到本地化項目「%@」";
 
 /* ESDCatalog */
 "Missing element '%@' in '%@'" = "「%2$@」中丟失元素「%1$@」";
@@ -101,13 +101,13 @@
 "Refresh" = "重新整理";
 
 /* PrettyString */
-"Release Preview" = "Release Preview";
+"Release Preview" = "發行預覽版本";
 
 /* PrettyString */
-"Retail" = "零售版本通道";
+"Retail" = "零售版本";
 
 /* Worker */
-"Saving ISO..." = "正在儲存 ISO 檔案…";
+"Saving ISO..." = "正在儲存 ISO 檔案⋯⋯";
 
 /* No comment provided by engineer. */
 "Server Builds" = "伺服器構建";
@@ -119,7 +119,7 @@
 "Show unstable releases which previews upcoming features." = "顯示不穩定的發行版本，當中可以預覽將要推出的功能。";
 
 /* No comment provided by engineer. */
-"Simple…" = "簡化…";
+"Simple…" = "簡化⋯⋯";
 
 /* Worker */
 "Starting download..." = "正在開始下載⋯⋯";
