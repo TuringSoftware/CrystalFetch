@@ -2,7 +2,7 @@
 "Accept" = "接受";
 
 /* No comment provided by engineer. */
-"All builds…" = "全部版本……";
+"All builds…" = "全部版本…";
 
 /* PrettyString */
 "Apple Silicon" = "Apple 芯片";
@@ -41,7 +41,7 @@
 "Channel" = "通道";
 
 /* Worker */
-"Converting download to ISO..." = "正在将下载转换为 ISO……";
+"Converting download to ISO..." = "正在将下载转换为 ISO…";
 
 /* No comment provided by engineer. */
 "Created" = "创建时间";
@@ -50,10 +50,10 @@
 "Development" = "开发";
 
 /* No comment provided by engineer. */
-"Download…" = "下载……";
+"Download…" = "下载…";
 
 /* Worker */
-"Downloading %@ of %@..." = "正在下载 %1$@（共 %2$@）……";
+"Downloading %@ of %@..." = "正在下载 %1$@（共 %2$@）…";
 
 /* No comment provided by engineer. */
 "Edition" = "版本";
@@ -71,7 +71,7 @@
 "Failed to parse element '%@'" = "无法解析元素 '%@'";
 
 /* Worker */
-"Fetching files list..." = "获取文件列表……";
+"Fetching files list..." = "获取文件列表…";
 
 /* No comment provided by engineer. */
 "I agree that I have a valid license to use this product." = "我同意我拥有使用此产品的有效许可证。";
@@ -107,7 +107,7 @@
 "Retail" = "零售版";
 
 /* Worker */
-"Saving ISO..." = "正在保存 ISO……";
+"Saving ISO..." = "正在保存 ISO…";
 
 /* No comment provided by engineer. */
 "Server Builds" = "服务器构建版本";
@@ -119,10 +119,10 @@
 "Show unstable releases which previews upcoming features." = "显示不稳定的发行版本，其中可预览即将推出的功能。";
 
 /* No comment provided by engineer. */
-"Simple…" = "简化……";
+"Simple…" = "简化…";
 
 /* Worker */
-"Starting download..." = "开始下载……";
+"Starting download..." = "开始下载…";
 
 /* No comment provided by engineer. */
 "Stop" = "停止";
