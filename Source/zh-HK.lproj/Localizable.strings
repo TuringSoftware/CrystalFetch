@@ -8,7 +8,7 @@
 "Apple Silicon" = "Apple 晶片";
 
 /* No comment provided by engineer. */
-"Architecture" = "架構";
+"Architecture" = "體系結構";
 
 /* No comment provided by engineer. */
 "Are you sure you want to stop the process?" = "確定要停止此程序嗎？";
@@ -41,7 +41,7 @@
 "Channel" = "頻道";
 
 /* Worker */
-"Converting download to ISO..." = "正在將下載的資料轉換成 ISO…";
+"Converting download to ISO..." = "正在將下載的資料轉換成 ISO⋯";
 
 /* No comment provided by engineer. */
 "Created" = "創建於";
