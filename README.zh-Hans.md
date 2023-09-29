@@ -13,7 +13,7 @@ CrystalFetch 是一个用于创建 Windows® 11 安装 ISO 映像的 macOS 应�
 
 编译
 --------
-1. 确保使用 `git submodule update --init` 来获取子模块（submodule）。
+1. 确保使用 `git submodule update --init` 来获取子模块。
 2. 若你有付费的 Apple Developer 账号，请将 `CodeSigning.xcconfig.sample` 拷贝到 `CodeSigning.xcconfig`，并用你的开发者信息来填写该文件。
 3. 若你没有付费的 Apple Developer 账号，需要禁用库验证（library validation）。对于此项目中的每个编译目标（build target），请前往“Signing & Capabilities”并勾选“Disable Library Validation”。
 4. 现在可以从 Xcode 编译和运行此项目了。
