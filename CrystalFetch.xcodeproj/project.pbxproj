@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63E2EBFA2AD1658800A32758 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E2EBF72AD1651700A32758 /* GeneralSettingsView.swift */; };
 		844A8EFB2A860F91009A389C /* ESDCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A8EFA2A860F91009A389C /* ESDCatalog.swift */; };
 		844A8EFF2A86CA8C009A389C /* SimpleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A8EFE2A86CA8C009A389C /* SimpleContentView.swift */; };
 		844A8F032A86E86F009A389C /* EULAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A8F022A86E86F009A389C /* EULAView.swift */; };
@@ -494,6 +495,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		63E2EBF72AD1651700A32758 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		844A8EFA2A860F91009A389C /* ESDCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESDCatalog.swift; sourceTree = "<group>"; };
 		844A8EFE2A86CA8C009A389C /* SimpleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleContentView.swift; sourceTree = "<group>"; };
 		844A8F022A86E86F009A389C /* EULAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAView.swift; sourceTree = "<group>"; };
@@ -976,6 +978,7 @@
 				CEC09F3E2A6F151800980857 /* CrystalFetch-Info.plist */,
 				FFB1B5282A929CEC00B95D56 /* CrystalFetch-InfoPlist.strings */,
 				CEC8BC522A7B55D80042878F /* Localizable.strings */,
+				63E2EBF72AD1651700A32758 /* GeneralSettingsView.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -1595,6 +1598,7 @@
 				CEC09F372A6E5B7600980857 /* BuildDetails.swift in Sources */,
 				CEC09F3B2A6E629F00980857 /* PrettyString.swift in Sources */,
 				CEC09F3D2A6EECC700980857 /* Downloader.swift in Sources */,
+				63E2EBFA2AD1658800A32758 /* GeneralSettingsView.swift in Sources */,
 				CEC09F2D2A6DC60500980857 /* UUPDetails.swift in Sources */,
 				CEC09F352A6DF33C00980857 /* BuildsListView.swift in Sources */,
 				84EB35722A870EA7004F252E /* ShowWindowButtonView.swift in Sources */,

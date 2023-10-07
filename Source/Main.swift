@@ -32,5 +32,9 @@ struct Main: App {
         }.commands {
             SidebarCommands()
         }.handlesExternalEvents(matching: Set(["UUPDump"]))
+        
+        Settings {
+            GeneralSettingsView()
+        }
     }
 }
