@@ -13,10 +13,10 @@ CrystalFetch 是一個 macOS 應用程式，用於製作 Windows® 11 安裝程�
 
 構建
 --------
-1. 確保使用 `git submodule update --init` 來獲取子模組。
-2. 如果你有 Apple Developer 付費賬戶，請複製 `CodeSigning.xcconfig.sample` 到 `CodeSigning.xcconfig`，並在此檔案中填寫你的開發人員訊息。
-3. 如果你沒有 Apple Developer 付費賬戶，你需要禁用庫驗證。對於項目中的每一個構建目標，轉至“Signing & Capabilities”，然後選擇“Disable Library Validation”核取方塊。
-4. 現在就可以由 Xcode 構建並執行此項目了。
+1. 確保你使用 `git submodule update --init` 來獲取子模組。
+2. 如你有 Apple Developer 付費賬戶，請複製 `CodeSigning.xcconfig.sample` 到 `CodeSigning.xcconfig`，並在此檔案中填寫你的開發人員訊息。
+3. 如你沒有 Apple Developer 付費賬戶，你需要禁用庫驗證。對於項目中的每一個構建目標，轉至“Signing & Capabilities”，之後選取“Disable Library Validation”核取方塊。
+4. 現在你就可以由 Xcode 構建並執行此項目了。
 
 致謝
 -------
@@ -24,7 +24,7 @@ CrystalFetch 使用了 [UUPDump][3] 的 API 與轉換程式碼。
 
 CrystalFetch 使用了由 Technogeezer 製作的 [esd2iso][4]。
 
-此項目與 Microsoft Corporation 無關聯。Windows® 是 Microsoft Corporation 的註冊商標。
+此項目與 Microsoft Corporation 無關聯。Windows® 為 Microsoft Corporation 的註冊商標。
 
   [1]: https://github.com/TuringSoftware/CrystalFetch/actions?query=event%3Arelease+workflow%3ABuild
   [2]: https://mac.getutm.app
