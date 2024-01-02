@@ -855,6 +855,8 @@
 		CEC0A3082A71BBA900980857 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
 		CEC8BC512A7B55D80042878F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEC8BC532A7B56280042878F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F65FBD842AA77422007637B0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F65FBD852AA77426007637B0 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FFB1B5272A929A2800B95D56 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FFB1B5292A929CEC00B95D56 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CrystalFetch-InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1547,6 +1549,8 @@
 				Base,
 				ja,
 				"zh-Hant",
+				"zh-Hans",
+				"zh-HK",
 			);
 			mainGroup = CEC09F022A6BB66200980857;
 			packageReferences = (
@@ -2003,6 +2007,8 @@
 				CEC8BC512A7B55D80042878F /* en */,
 				CEC8BC532A7B56280042878F /* ja */,
 				FFB1B5272A929A2800B95D56 /* zh-Hant */,
+				F65FBD842AA77422007637B0 /* zh-Hans */,
+				F65FBD852AA77426007637B0 /* zh-HK */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
