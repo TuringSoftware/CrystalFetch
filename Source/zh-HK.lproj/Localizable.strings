@@ -11,7 +11,7 @@
 "Architecture" = "體系結構";
 
 /* No comment provided by engineer. */
-"Are you sure you want to stop the process?" = "確定要停止此程序嗎？";
+"Are you sure you want to stop the process?" = "你要停止此程序嗎？";
 
 /* ESDCatalog */
 "Attribute '%@' not found" = "未找到屬性「%@」";
@@ -23,10 +23,10 @@
 "Build" = "構建";
 
 /* No comment provided by engineer. */
-"Build custom installation for any build through UUP Dump." = "由 UUP Dump 為任何構建生成自定義安裝映像檔。";
+"Build custom installation for any build through UUP Dump." = "透過 UUP Dump 為任意構建製作自定安裝映像檔。";
 
 /* No comment provided by engineer. */
-"Build installation for the latest release through ESD conversion." = "由 ESD 轉換為最新 Release 構建安裝映像檔。";
+"Build installation for the latest release through ESD conversion." = "將 ESD 轉換為最新 Release 構建安裝映像檔。";
 
 /* PrettyString */
 "Canary" = "Canary";
@@ -35,16 +35,16 @@
 "Cancel" = "取消";
 
 /* UUPDumpAPI */
-"Cannot find data from the server response." = "無法從伺服器回應中找到資料。";
+"Cannot find data from the server response." = "無法由伺服器回應找到資料。";
 
 /* No comment provided by engineer. */
 "Channel" = "頻道";
 
 /* Worker */
-"Converting download to ISO..." = "正在將下載的資料轉換成 ISO⋯";
+"Converting download to ISO..." = "正在轉換下載的資料至 ISO⋯";
 
 /* No comment provided by engineer. */
-"Created" = "創建於";
+"Created" = "製作時間";
 
 /* PrettyString */
 "Development" = "Development";
@@ -53,7 +53,7 @@
 "Download…" = "下載⋯";
 
 /* Worker */
-"Downloading %@ of %@..." = "正在下載 %1$@/%2$@⋯";
+"Downloading %@ of %@..." = "正在下載 %1$@ / %2$@⋯";
 
 /* No comment provided by engineer. */
 "Edition" = "版本";
@@ -89,7 +89,7 @@
 "Localization '%@' not found" = "無法找到本地化項目「%@」";
 
 /* ESDCatalog */
-"Missing element '%@' in '%@'" = "「%2$@」中丟失元素「%1$@」";
+"Missing element '%@' in '%@'" = "「%2$@」中遺失元素「%1$@」";
 
 /* No comment provided by engineer. */
 "No build found." = "無法找到構建。";
@@ -104,10 +104,10 @@
 "Release Preview" = "Release Preview";
 
 /* PrettyString */
-"Retail" = "零售版本";
+"Retail" = "Retail";
 
 /* Worker */
-"Saving ISO..." = "正在儲存 ISO 檔案⋯";
+"Saving ISO..." = "正在儲存 ISO⋯";
 
 /* No comment provided by engineer. */
 "Server Builds" = "伺服器構建";
@@ -116,7 +116,7 @@
 "Show builds for running in a server environment." = "顯示用於伺服器環境運行的構建。";
 
 /* No comment provided by engineer. */
-"Show unstable releases which previews upcoming features." = "顯示不穩定的發行版本，當中可以預覽將要推出的功能。";
+"Show unstable releases which previews upcoming features." = "顯示不穩定的發行版本，當中可以預覽即將推出的功能。";
 
 /* No comment provided by engineer. */
 "Simple…" = "簡化⋯";
@@ -128,10 +128,10 @@
 "Stop" = "停止";
 
 /* Worker */
-"The conversion script failed with error code %d" = "執行轉換失敗，錯誤碼為 %d";
+"The conversion script failed with error code %d" = "無法執行轉換，錯誤碼為 %d";
 
 /* ESDCatalog */
-"Unexpected string '%@' for field '%@'" = "「%2$@」欄位中出現意外字符串「%1$@」";
+"Unexpected string '%@' for field '%@'" = "「%2$@」欄位當中出現意外字符串「%1$@」";
 
 /* PrettyString */
 "Unknown" = "未知";
