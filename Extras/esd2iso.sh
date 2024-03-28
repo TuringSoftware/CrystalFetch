@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # w11arm_esd2iso - download and convert Microsoft ESD files for Windows 11 ARM to ISO
 #
