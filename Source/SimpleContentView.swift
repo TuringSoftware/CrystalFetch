@@ -18,6 +18,7 @@ import SwiftUI
 
 struct SimpleContentView: View {
     @EnvironmentObject private var worker: Worker
+    @AppStorage("ShowAdvancedOptions") private var showAdvancedOptions: Bool = false
     @State private var isConfirmCancelShown: Bool = false
     @State private var isDownloadCompleted: Bool = false
     
@@ -88,10 +89,12 @@ struct SimpleContentView: View {
                 }
             }
             HStack {
-                ShowWindowButtonView(id: "UUPDump") {
-                    Text("All builds…")
-                }.disabled(worker.isBusy)
-                .help("Build custom installation for any build through UUP Dump.")
+                if showAdvancedOptions {
+                    ShowWindowButtonView(id: "UUPDump") {
+                        Text("All builds…")
+                    }.disabled(worker.isBusy)
+                        .help("Build custom installation for any build through UUP Dump.")
+                }
                 Spacer()
                 if worker.isBusy {
                     Button(role: .cancel) {

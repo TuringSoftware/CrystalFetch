@@ -19,7 +19,8 @@ import SwiftUI
 @main
 struct Main: App {
     @StateObject private var worker = Worker()
-    
+    @AppStorage("ShowAdvancedOptions") private var showAdvancedOptions: Bool = false
+
     var body: some Scene {
         WindowGroup(id: "ESDConvert") {
             SimpleContentView().environmentObject(worker)
@@ -31,6 +32,9 @@ struct Main: App {
                 .frame(minWidth: 800, minHeight: 400)
         }.commands {
             SidebarCommands()
+            CommandGroup(after: .sidebar) {
+                Toggle("Show Advanced Options", isOn: $showAdvancedOptions)
+            }
         }.handlesExternalEvents(matching: Set(["UUPDump"]))
     }
 }
