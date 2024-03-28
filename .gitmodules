@@ -12,7 +12,7 @@
 	url = https://github.com/ebiggers/wimlib
 [submodule "converter"]
 	path = converter
-	url = https://github.com/uup-dump/converter.git
+	url = https://git.uupdump.net/uup-dump/converter.git
 [submodule "OpenSSL"]
 	path = OpenSSL
 	url = https://github.com/krzyzanowskim/OpenSSL.git
