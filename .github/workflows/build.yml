@@ -60,6 +60,13 @@ jobs:
         with:
           p12-file-base64: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
           p12-password: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
+      - name: Import App Store Connect API Key
+        run: |
+          mkdir -p ~/.appstoreconnect/private_keys
+          echo $AUTHKEY_API_KEY | base64 --decode -o ~/.appstoreconnect/private_keys/AuthKey_$API_KEY.p8
+        env:
+          AUTHKEY_API_KEY: ${{ secrets.CONNECT_KEY }}
+          API_KEY: ${{ vars.CONNECT_KEY_ID }}
       - name: Install Provisioning Profiles
         run: |
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
@@ -80,11 +87,13 @@ jobs:
           SIGNING_TEAM_ID: ${{ vars.SIGNING_TEAM_ID }}
           PROFILE_UUID: ${{ vars.PROFILE_UUID }}
       - name: Notarize app
-        run: npx notarize-cli --file "$PRODUCT_NAME.dmg" --bundle-id "$BUNDLE_ID"
+        run: |
+          xcrun notarytool submit --issuer "$ISSUER_UUID" --key-id "$API_KEY" --key "~/.appstoreconnect/private_keys/AuthKey_$API_KEY.p8" --team-id "$SIGNING_TEAM_ID" --wait "$PRODUCT_NAME.dmg"
+          xcrun stapler staple "$PRODUCT_NAME.dmg"
         env:
-          BUNDLE_ID: ${{ vars.PRODUCT_BUNDLE_PREFIX }}.${{ env.PRODUCT_NAME }}
-          NOTARIZE_USERNAME: ${{ secrets.SIGNING_USERNAME }}
-          NOTARIZE_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+          SIGNING_TEAM_ID: ${{ vars.SIGNING_TEAM_ID }}
+          ISSUER_UUID: ${{ vars.CONNECT_ISSUER_ID }}
+          API_KEY: ${{ vars.CONNECT_KEY_ID }}
       - name: Upload Artifact
         if: github.event_name != 'release'
         uses: actions/upload-artifact@v3
@@ -114,6 +123,13 @@ jobs:
         with:
           p12-file-base64: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
           p12-password: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
+      - name: Import App Store Connect API Key
+        run: |
+          mkdir -p ~/.appstoreconnect/private_keys
+          echo $AUTHKEY_API_KEY | base64 --decode -o ~/.appstoreconnect/private_keys/AuthKey_$API_KEY.p8
+        env:
+          AUTHKEY_API_KEY: ${{ secrets.CONNECT_KEY }}
+          API_KEY: ${{ vars.CONNECT_KEY_ID }}
       - name: Install Provisioning Profiles
         run: |
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
@@ -142,8 +158,8 @@ jobs:
       - name: Upload app to App Store Connect
         if: github.event_name == 'release'
         run: |
-          xcrun altool --upload-app -t macos -f "$PRODUCT_NAME.pkg" -u "$SUBMIT_USERNAME" -p "$SUBMIT_PASSWORD"
+          xcrun altool --upload-app -t macos -f "$PRODUCT_NAME.pkg" --apiKey "$API_KEY" --apiIssuer "$ISSUER_UUID"
         env:
           PRODUCT_NAME: ${{ env.PRODUCT_NAME }}
-          SUBMIT_USERNAME: ${{ secrets.SIGNING_USERNAME }}
-          SUBMIT_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+          ISSUER_UUID: ${{ vars.CONNECT_ISSUER_ID }}
+          API_KEY: ${{ vars.CONNECT_KEY_ID }}
