@@ -2274,6 +2274,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_PREFIX:default=llc.turing).CrystalFetch.mkisofs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = "-Wno-error=incompatible-function-pointer-types";
 			};
 			name = Debug;
 		};
@@ -2317,6 +2318,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_PREFIX:default=llc.turing).CrystalFetch.mkisofs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = "-Wno-error=incompatible-function-pointer-types";
 			};
 			name = Release;
 		};
