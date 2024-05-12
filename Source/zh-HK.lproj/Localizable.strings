@@ -95,6 +95,9 @@
 "No build found." = "無法找到構建。";
 
 /* No comment provided by engineer. */
+"Note: This build does not work for virtualization on Apple Silicon." = "注意：這個構建不適用於 Apple 晶片上的虛擬化。";
+
+/* No comment provided by engineer. */
 "Prerelease Builds" = "預先發布構建";
 
 /* No comment provided by engineer. */
@@ -111,6 +114,9 @@
 
 /* No comment provided by engineer. */
 "Server Builds" = "伺服器構建";
+
+/* No comment provided by engineer. */
+"Show Advanced Options" = "顯示進階選項";
 
 /* No comment provided by engineer. */
 "Show builds for running in a server environment." = "顯示用於伺服器環境運行的構建。";
