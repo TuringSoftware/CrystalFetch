@@ -62,7 +62,7 @@
 "Editions" = "版本";
 
 /* UUPDumpAPI */
-"Error returned from server: %@" = "服务器返回错误： %@";
+"Error returned from server: %@" = "服务器返回错误：%@";
 
 /* EULAView */
 "Failed to load EULA." = "无法加载 EULA（最终用户许可协议）。";
@@ -95,7 +95,7 @@
 "No build found." = "未找到构建版本。";
 
 /* No comment provided by engineer. */
-"Note: This build does not work for virtualization on Apple Silicon." = "注意：此版本无法在 Apple 芯片上实现虚拟化。";
+"Note: This build does not work for virtualization on Apple Silicon." = "注意：此版本无法在 Apple 芯片上用作虚拟化。";
 
 /* No comment provided by engineer. */
 "Prerelease Builds" = "预发行构建版本";
