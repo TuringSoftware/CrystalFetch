@@ -11,7 +11,7 @@
 "Architecture" = "體系結構";
 
 /* No comment provided by engineer. */
-"Are you sure you want to stop the process?" = "你要停止此程序嗎？";
+"Are you sure you want to stop the process?" = "你要停止這個程序嗎？";
 
 /* ESDCatalog */
 "Attribute '%@' not found" = "未找到屬性「%@」";
@@ -74,7 +74,7 @@
 "Fetching files list..." = "正在獲取檔案清單⋯";
 
 /* No comment provided by engineer. */
-"I agree that I have a valid license to use this product." = "我同意我擁有使用此產品的有效許可。";
+"I agree that I have a valid license to use this product." = "我同意我擁有使用這個產品的有效許可。";
 
 /* PrettyString */
 "Intel x64" = "Intel x64";
