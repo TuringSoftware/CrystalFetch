@@ -11,10 +11,10 @@
 "Architecture" = "架构";
 
 /* No comment provided by engineer. */
-"Are you sure you want to stop the process?" = "确定要停止此进程吗？";
+"Are you sure you want to stop the process?" = "你确定要停止此进程吗？";
 
 /* ESDCatalog */
-"Attribute '%@' not found" = "属性 '%@' 未找到";
+"Attribute '%@' not found" = "属性“%@”未找到";
 
 /* PrettyString */
 "Beta" = "Beta";
@@ -53,7 +53,7 @@
 "Download…" = "下载…";
 
 /* Worker */
-"Downloading %@ of %@..." = "正在下载 %1$@（共 %2$@）…";
+"Downloading %@ of %@..." = "正在下载 %1$@，共 %2$@…";
 
 /* No comment provided by engineer. */
 "Edition" = "版本";
@@ -65,10 +65,10 @@
 "Error returned from server: %@" = "服务器返回错误：%@";
 
 /* EULAView */
-"Failed to load EULA." = "无法加载 EULA（最终用户许可协议）。";
+"Failed to load EULA." = "无法加载 EULA (最终用户许可协议)。";
 
 /* ESDCatalog */
-"Failed to parse element '%@'" = "无法解析元素 '%@'";
+"Failed to parse element '%@'" = "无法解析元素“%@”";
 
 /* Worker */
 "Fetching files list..." = "获取文件列表…";
@@ -86,16 +86,16 @@
 "Language" = "语言";
 
 /* ESDCatalog */
-"Localization '%@' not found" = "本地化条目 '%@' 未找到";
+"Localization '%@' not found" = "本地化条目“%@”未找到";
 
 /* ESDCatalog */
-"Missing element '%@' in '%@'" = "'%2$@' 中缺少元素 '%1$@'";
+"Missing element '%@' in '%@'" = "“%2$@”中缺少元素“%1$@”";
 
 /* No comment provided by engineer. */
 "No build found." = "未找到构建版本。";
 
 /* No comment provided by engineer. */
-"Note: This build does not work for virtualization on Apple Silicon." = "注意：此版本无法在 Apple 芯片上用作虚拟化。";
+"Note: This build does not work for virtualization on Apple Silicon." = "注意：此版本无法在 Apple 芯片上用于虚拟化。";
 
 /* No comment provided by engineer. */
 "Prerelease Builds" = "预发行构建版本";
@@ -137,7 +137,7 @@
 "The conversion script failed with error code %d" = "转换脚本失败，错误代码为 %d";
 
 /* ESDCatalog */
-"Unexpected string '%@' for field '%@'" = "字段 '%2$@' 中存在意外字符串 '%1$@'";
+"Unexpected string '%@' for field '%@'" = "字段“%2$@”中存在意外字符串“%1$@”";
 
 /* PrettyString */
 "Unknown" = "未知";
@@ -149,7 +149,7 @@
 "Unknown Language" = "未知语言";
 
 /* ESDCatalog */
-"Unknown parser error." = "未知解析器错误。";
+"Unknown parser error." = "未知的解析器错误。";
 
 /* No comment provided by engineer. */
 "Version" = "版本";
