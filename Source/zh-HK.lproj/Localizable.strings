@@ -8,10 +8,10 @@
 "Apple Silicon" = "Apple 晶片";
 
 /* No comment provided by engineer. */
-"Architecture" = "體系結構";
+"Architecture" = "架構";
 
 /* No comment provided by engineer. */
-"Are you sure you want to stop the process?" = "你要停止這個程序嗎？";
+"Are you sure you want to stop the process?" = "要停止這個程序嗎？";
 
 /* ESDCatalog */
 "Attribute '%@' not found" = "未找到屬性「%@」";
@@ -26,7 +26,7 @@
 "Build custom installation for any build through UUP Dump." = "透過 UUP Dump 為任意構建製作自定安裝映像檔。";
 
 /* No comment provided by engineer. */
-"Build installation for the latest release through ESD conversion." = "將 ESD 轉換為最新 Release 構建安裝映像檔。";
+"Build installation for the latest release through ESD conversion." = "透過 ESD 轉換為最新的 Release 構建安裝映像檔。";
 
 /* PrettyString */
 "Canary" = "Canary";
