@@ -12,6 +12,7 @@
 		844A8F032A86E86F009A389C /* EULAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A8F022A86E86F009A389C /* EULAView.swift */; };
 		844A8F062A86F92F009A389C /* esd2iso.sh in Resources */ = {isa = PBXBuildFile; fileRef = 844A8F052A86F92F009A389C /* esd2iso.sh */; };
 		84EB35722A870EA7004F252E /* ShowWindowButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB35712A870EA6004F252E /* ShowWindowButtonView.swift */; };
+		CE39C8A22D97003600A83CE8 /* MCTCatalogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39C8A12D97003600A83CE8 /* MCTCatalogs.swift */; };
 		CEC09F0F2A6BB66200980857 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F0E2A6BB66200980857 /* Main.swift */; };
 		CEC09F112A6BB66200980857 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC09F102A6BB66200980857 /* ContentView.swift */; };
 		CEC09F132A6BB66300980857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC09F122A6BB66300980857 /* Assets.xcassets */; };
@@ -499,6 +500,7 @@
 		844A8F022A86E86F009A389C /* EULAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAView.swift; sourceTree = "<group>"; };
 		844A8F052A86F92F009A389C /* esd2iso.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = esd2iso.sh; sourceTree = "<group>"; };
 		84EB35712A870EA6004F252E /* ShowWindowButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowWindowButtonView.swift; sourceTree = "<group>"; };
+		CE39C8A12D97003600A83CE8 /* MCTCatalogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTCatalogs.swift; sourceTree = "<group>"; };
 		CEC09F0B2A6BB66200980857 /* CrystalFetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalFetch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC09F0E2A6BB66200980857 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		CEC09F102A6BB66200980857 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -915,6 +917,7 @@
 			isa = PBXGroup;
 			children = (
 				844A8EFA2A860F91009A389C /* ESDCatalog.swift */,
+				CE39C8A12D97003600A83CE8 /* MCTCatalogs.swift */,
 			);
 			path = ESDCatalog;
 			sourceTree = "<group>";
@@ -1588,6 +1591,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE39C8A22D97003600A83CE8 /* MCTCatalogs.swift in Sources */,
 				CEC09F112A6BB66200980857 /* ContentView.swift in Sources */,
 				CEC09F312A6DC8FB00980857 /* UUPPackage.swift in Sources */,
 				844A8EFF2A86CA8C009A389C /* SimpleContentView.swift in Sources */,

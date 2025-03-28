@@ -22,21 +22,29 @@ struct SimpleContentView: View {
     @State private var isConfirmCancelShown: Bool = false
     @State private var isDownloadCompleted: Bool = false
     
-    @State private var isWindows10: Bool = false
+    @State private var windowsVersion: MCTCatalogs.Windows = .windows11
+    @State private var selectedBuild: MCTCatalogs.Release?
     @State private var selected: SelectedTuple = .default
-    @State private var selectedBuild: ESDCatalog.File?
+    @State private var selectedFile: ESDCatalog.File?
     @State private var selectedEula: SelectedEULA?
     
     @State private var languages: [DisplayString] = []
     @State private var editions: [DisplayString] = []
-    
+
+    private let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        return dateFormatter
+    }()
+
     var body: some View {
         VStack {
             Form {
-                Picker("Version", selection: $isWindows10) {
-                    Text("Windows® 11").tag(false)
-                    Text("Windows® 10").tag(true)
+                Picker("Version", selection: $windowsVersion) {
+                    Text("Windows® 11").tag(MCTCatalogs.Windows.windows11)
+                    Text("Windows® 10").tag(MCTCatalogs.Windows.windows10)
                 }.pickerStyle(.radioGroup)
+                buildsPicker
                 Picker("Architecture", selection: $selected.architecture) {
                     if hasArchitecture("ARM64") {
                         Text("Apple Silicon").tag("ARM64")
@@ -58,12 +66,19 @@ struct SimpleContentView: View {
                         Text(edition.display).tag(edition.id)
                     }
                 }
-                if isWindows10 && selected.architecture == "ARM64" {
+                if windowsVersion == .windows10 && selected.architecture == "ARM64" {
                     Text("Note: This build does not work for virtualization on Apple Silicon.")
                 }
             }.disabled(worker.isBusy)
-            .onChange(of: isWindows10) { newValue in
-                worker.refreshEsdCatalog(windows10: newValue)
+            .onChange(of: windowsVersion) { newValue in
+                if selectedBuild == nil {
+                    worker.refreshEsdCatalog(windowsVersion: newValue)
+                } else {
+                    selectedBuild = nil
+                }
+            }
+            .onChange(of: selectedBuild) { newValue in
+                worker.refreshEsdCatalog(windowsVersion: windowsVersion, release: newValue)
             }
             .onChange(of: worker.esdCatalog) { _ in
                 refreshList()
@@ -112,21 +127,21 @@ struct SimpleContentView: View {
                     }
                 } else {
                     Button {
-                        if let eula = selectedBuild?.eula {
+                        if let eula = selectedFile?.eula {
                             selectedEula = SelectedEULA(url: URL(string: eula)!)
-                        } else if let selectedBuild = selectedBuild {
-                            worker.download(selectedBuild)
+                        } else if let selectedFile = selectedFile {
+                            worker.download(selectedFile)
                         }
                     } label: {
                         Text("Download…")
-                    }.disabled(selectedBuild == nil)
+                    }.disabled(selectedFile == nil)
                 }
             }
         }
         .sheet(item: $selectedEula) { eula in
             EULAView(url: eula.url) {
-                if let selectedBuild = selectedBuild {
-                    worker.download(selectedBuild)
+                if let selectedFile = selectedFile {
+                    worker.download(selectedFile)
                 }
             }
         }
@@ -135,6 +150,7 @@ struct SimpleContentView: View {
         }
         .padding()
         .onAppear {
+            worker.refreshCatalogUrls()
             worker.refreshEsdCatalog()
             refreshList()
         }
@@ -152,11 +168,27 @@ struct SimpleContentView: View {
             }
         }
     }
-    
+
+    @ViewBuilder
+    var buildsPicker: some View {
+        if let builds = worker.mctCatalogs[windowsVersion]?.releases {
+            Picker("Build", selection: $selectedBuild) {
+                Text("Latest").tag(nil as MCTCatalogs.Release?)
+                ForEach(builds) { build in
+                    if let date = build.date {
+                        Text("\(build.build) (\(dateFormatter.string(from: date)))").tag(build)
+                    } else {
+                        Text(build.build).tag(build)
+                    }
+                }
+            }
+        }
+    }
+
     @ViewBuilder
     private var progressLabel: some View {
-        if let selectedBuild = selectedBuild {
-            Text(selectedBuild.name).font(.caption)
+        if let selectedFile = selectedFile {
+            Text(selectedFile.name).font(.caption)
         } else if !worker.isBusy {
             Text("No build found.").font(.caption)
         }
@@ -173,7 +205,7 @@ struct SimpleContentView: View {
         let languageFiltered = archFiltered.filter({ $0.languageCode == selected.language })
         let editionsList = languageFiltered.map({ DisplayString(id: $0.edition, display: $0.editionPretty )})
         editions = Set(editionsList).sorted(using: KeyPathComparator(\.display))
-        selectedBuild = languageFiltered.first(where: { $0.edition == selected.edition })
+        selectedFile = languageFiltered.first(where: { $0.edition == selected.edition })
     }
 }
 

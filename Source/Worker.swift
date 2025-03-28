@@ -35,7 +35,8 @@ class Worker: ObservableObject {
     @Published private(set) var progress: Float?
     @Published private(set) var progressStatus: String?
     @Published var completedDownloadUrl: URL?
-    
+
+    @Published var mctCatalogs: [MCTCatalogs.Windows: MCTCatalogs.Version] = [:]
     @Published var esdCatalog: [ESDCatalog.File] = []
     
     private let api = UUPDumpAPI()
@@ -317,8 +318,31 @@ extension Worker {
     private var windows11CatalogUrl: URL {
         URL(string: "https://go.microsoft.com/fwlink?linkid=2156292")!
     }
-    
-    func refreshEsdCatalog(windows10: Bool = false) {
+
+    private var worprojectUrl: URL {
+        URL(string: "https://worproject.com/dldserv/esd/getversions.php")!
+    }
+
+    func refreshCatalogUrls() {
+        let cacheUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let catalogsUrl = cacheUrl.appendingPathComponent("mctcatalogs.xml")
+        withBusyIndication { [self] in
+            let fm = FileManager.default
+            let downloader = Downloader()
+            try? fm.removeItem(at: catalogsUrl)
+            await downloader.enqueue(downloadUrl: worprojectUrl, to: catalogsUrl)
+            do {
+                try await downloader.start()
+                let data = try Data(contentsOf: catalogsUrl)
+                let catalogs = try await MCTCatalogs(from: data)
+                mctCatalogs = await catalogs.versions
+            } catch {
+                NSLog("Ignoring error while trying to fetch MCT catalogs: %@", error.localizedDescription)
+            }
+        }
+    }
+
+    func refreshEsdCatalog(windowsVersion: MCTCatalogs.Windows = .windows11, release: MCTCatalogs.Release? = nil) {
         let cacheUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let catalogUrl = cacheUrl.appendingPathComponent("catalog.cab")
         let productsUrl = cacheUrl.appendingPathComponent("products.xml")
@@ -326,12 +350,29 @@ extension Worker {
             let fm = FileManager.default
             let downloader = Downloader()
             try? fm.removeItem(at: catalogUrl)
-            if windows10 {
-                await downloader.enqueue(downloadUrl: windows10CatalogUrl, to: catalogUrl)
+            // if we specify a release, then use it
+            if let release = release {
+                await downloader.enqueue(downloadUrl: release.cabUrl, to: catalogUrl)
+                try await downloader.start()
             } else {
-                await downloader.enqueue(downloadUrl: windows11CatalogUrl, to: catalogUrl)
+                // next try hard coded cab url
+                if windowsVersion == .windows10 {
+                    await downloader.enqueue(downloadUrl: windows10CatalogUrl, to: catalogUrl)
+                } else {
+                    await downloader.enqueue(downloadUrl: windows11CatalogUrl, to: catalogUrl)
+                }
+                do {
+                    try await downloader.start()
+                } catch {
+                    // finally, see if we got a new latest cab url
+                    if let url = mctCatalogs[windowsVersion]?.latestCabUrl {
+                        await downloader.enqueue(downloadUrl: url, to: catalogUrl)
+                        try await downloader.start()
+                    } else {
+                        throw error // otherwise we throw the original error
+                    }
+                }
             }
-            try await downloader.start()
             try await exec("cabextract", "-d", cacheUrl.path, catalogUrl.path)
             let data = try Data(contentsOf: productsUrl)
             let esd = try await ESDCatalog(from: data)
