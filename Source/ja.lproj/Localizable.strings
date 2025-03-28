@@ -24,6 +24,9 @@
 "Release Preview" = "Release Preview";
 "Retail" = "Retail";
 
+// Main.swift
+"Show Advanced Options" = "詳細オプションを表示";
+
 // ContentView.swift
 "Prerelease Builds" = "プレリリースビルド";
 "Show unstable releases which previews upcoming features." = "今後の機能をプレビューする不安定なリリースを表示します。";
