@@ -126,7 +126,7 @@ actor Downloader {
             try FileManager.default.moveItem(at: resultUrl, to: destinationUrl)
         } catch {
             let error = error as NSError
-            NSLog("Downloading %@ failed: ", debugIdentifier, error.localizedDescription)
+            NSLog("Downloading %@ failed: %@", debugIdentifier, error.localizedDescription)
             if retry > 0 {
                 let newTask: URLSessionDownloadTask
                 if let resumeData = error.userInfo[NSURLSessionDownloadTaskResumeData] as? Data {
