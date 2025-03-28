@@ -22,7 +22,7 @@
 # Microsoft Product catalog from b0gdanw "ESD to ISO on macOS.txt" https://gist.github.com/b0gdanw/e36ea84828dbd19e03eff6158f1fc77c
 #
 
-versionID="4.0.2 (13-July-2023)"
+versionID="4.0.3 (17-September-2023)"
 version="w11arm_esd2iso ${versionID}\n"
 verbosityLevel=0
 
@@ -184,6 +184,17 @@ buildIso(){
 #
 #-------------------
 
+#-------------------
+# Bug fix - 16-Sept-2023 PER
+#
+# aria2c seems to have an issue with Sonoma: https://github.com/aria2/aria2/issues/2083
+# This results in an error 134 that was displayed when trying to download the
+# Windows 11 ARM catalog from Microsoft.
+#
+# suggested workaround is to set LC_MESSAGES environment variable
+#-------------------
+
+export LC_MESSAGES="C"
 
 #-------------------
 # 
