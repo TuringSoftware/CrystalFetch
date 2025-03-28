@@ -20,12 +20,12 @@ on:
 
 env:
   PRODUCT_NAME: CrystalFetch
-  BUILD_XCODE_PATH: /Applications/Xcode_14.2.app
+  BUILD_XCODE_PATH: /Applications/Xcode_16.2.app
 
 jobs:
   build:
     name: Build
-    runs-on: macos-12
+    runs-on: macos-15
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -37,19 +37,19 @@ jobs:
           [[ "$(xcode-select -p)" == "${{ env.BUILD_XCODE_PATH }}"* ]] || sudo xcode-select -s "${{ env.BUILD_XCODE_PATH }}"
       - name: Build
         run: |
-          xcodebuild archive -archivePath "$PRODUCT_NAME" -scheme "$PRODUCT_NAME" -configuration Release CODE_SIGN_IDENTITY="-" PRODUCT_BUNDLE_PREFIX="$PRODUCT_BUNDLE_PREFIX"
+          xcodebuild archive -archivePath "$PRODUCT_NAME" -scheme "$PRODUCT_NAME" -configuration Release CODE_SIGN_IDENTITY="-" PRODUCT_BUNDLE_PREFIX="$PRODUCT_BUNDLE_PREFIX" ONLY_ACTIVE_ARCH=No
           tar -acf $PRODUCT_NAME.xcarchive.tgz $PRODUCT_NAME.xcarchive
         env:
           PRODUCT_NAME: ${{ env.PRODUCT_NAME }}
           PRODUCT_BUNDLE_PREFIX: ${{ vars.PRODUCT_BUNDLE_PREFIX }}
       - name: Upload
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PRODUCT_NAME }}
           path: ${{ env.PRODUCT_NAME }}.xcarchive.tgz
   package:
     name: Package
-    runs-on: macos-12
+    runs-on: macos-15
     needs: [build]
     if: github.event_name == 'release' || github.event.inputs.test_release == 'true'
     steps:
@@ -75,7 +75,7 @@ jobs:
           PROFILE_DATA: ${{ vars.PROFILE_DATA }}
           PROFILE_UUID: ${{ vars.PROFILE_UUID }}
       - name: Download Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.PRODUCT_NAME }}
       - name: Package for Release
@@ -96,7 +96,7 @@ jobs:
           API_KEY: ${{ vars.CONNECT_KEY_ID }}
       - name: Upload Artifact
         if: github.event_name != 'release'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PRODUCT_NAME }}-dmg
           path: ${{ env.PRODUCT_NAME }}.dmg
@@ -112,12 +112,12 @@ jobs:
           asset_content_type: application/octet-stream
   submit:
     name: Submit
-    runs-on: macos-12
+    runs-on: macos-15
     needs: [build]
     if: github.event_name == 'release' || github.event.inputs.test_release == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Import signing certificate into keychain
         uses: apple-actions/import-codesign-certs@v1
         with:
@@ -138,7 +138,7 @@ jobs:
           PROFILE_DATA: ${{ vars.APP_STORE_PROFILE_DATA }}
           PROFILE_UUID: ${{ vars.APP_STORE_PROFILE_UUID }}
       - name: Download Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.PRODUCT_NAME }}
       - name: Package for App Store
@@ -151,7 +151,7 @@ jobs:
           PROFILE_UUID: ${{ vars.APP_STORE_PROFILE_UUID }}
       - name: Upload Artifact
         if: github.event_name != 'release'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PRODUCT_NAME }}-pkg
           path: ${{ env.PRODUCT_NAME }}.pkg
