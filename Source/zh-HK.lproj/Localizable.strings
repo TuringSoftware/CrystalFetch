@@ -8,10 +8,10 @@
 "Apple Silicon" = "Apple 晶片";
 
 /* No comment provided by engineer. */
-"Architecture" = "體系結構";
+"Architecture" = "架構";
 
 /* No comment provided by engineer. */
-"Are you sure you want to stop the process?" = "你要停止此程序嗎？";
+"Are you sure you want to stop the process?" = "要停止這個程序嗎？";
 
 /* ESDCatalog */
 "Attribute '%@' not found" = "未找到屬性「%@」";
@@ -26,7 +26,7 @@
 "Build custom installation for any build through UUP Dump." = "透過 UUP Dump 為任意構建製作自定安裝映像檔。";
 
 /* No comment provided by engineer. */
-"Build installation for the latest release through ESD conversion." = "將 ESD 轉換為最新 Release 構建安裝映像檔。";
+"Build installation for the latest release through ESD conversion." = "透過 ESD 轉換為最新的 Release 構建安裝映像檔。";
 
 /* PrettyString */
 "Canary" = "Canary";
@@ -74,7 +74,7 @@
 "Fetching files list..." = "正在獲取檔案清單⋯";
 
 /* No comment provided by engineer. */
-"I agree that I have a valid license to use this product." = "我同意我擁有使用此產品的有效許可。";
+"I agree that I have a valid license to use this product." = "我同意我擁有使用這個產品的有效許可。";
 
 /* PrettyString */
 "Intel x64" = "Intel x64";
@@ -95,6 +95,9 @@
 "No build found." = "無法找到構建。";
 
 /* No comment provided by engineer. */
+"Note: This build does not work for virtualization on Apple Silicon." = "注意：這個構建不適用於 Apple 晶片上的虛擬化。";
+
+/* No comment provided by engineer. */
 "Prerelease Builds" = "預先發布構建";
 
 /* No comment provided by engineer. */
@@ -111,6 +114,9 @@
 
 /* No comment provided by engineer. */
 "Server Builds" = "伺服器構建";
+
+/* No comment provided by engineer. */
+"Show Advanced Options" = "顯示進階選項";
 
 /* No comment provided by engineer. */
 "Show builds for running in a server environment." = "顯示用於伺服器環境運行的構建。";
